@@ -63,7 +63,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main.h" />
+    <Text Include="ReadMe.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4076F803-47B4-4FEC-9857-E112CE4F82BB}</ProjectGuid>

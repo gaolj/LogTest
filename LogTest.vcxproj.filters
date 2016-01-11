@@ -19,9 +19,6 @@
     <Filter Include="sources">
       <UniqueIdentifier>{389d87e1-67c6-4657-935c-3b55a17899d1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="sinks">
-      <UniqueIdentifier>{ef04a069-56c7-4c9e-8a9e-3d616097da4d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="extension">
       <UniqueIdentifier>{1599bf42-d874-4043-a2b8-8b6d7f77ad37}</UniqueIdentifier>
     </Filter>
@@ -39,6 +36,9 @@
     </Filter>
     <Filter Include="attr_value">
       <UniqueIdentifier>{b1ba25b5-1d05-493e-85a4-7c4734862d8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sink">
+      <UniqueIdentifier>{ef04a069-56c7-4c9e-8a9e-3d616097da4d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -76,40 +76,40 @@
       <Filter>expressions</Filter>
     </ClCompile>
     <ClCompile Include="example\doc\sinks_async.cpp">
-      <Filter>sinks</Filter>
+      <Filter>sink</Filter>
     </ClCompile>
     <ClCompile Include="example\doc\sinks_async_bounded.cpp">
-      <Filter>sinks</Filter>
+      <Filter>sink</Filter>
     </ClCompile>
     <ClCompile Include="example\doc\sinks_async_ordering.cpp">
-      <Filter>sinks</Filter>
+      <Filter>sink</Filter>
     </ClCompile>
     <ClCompile Include="example\doc\sinks_debugger.cpp">
-      <Filter>sinks</Filter>
+      <Filter>sink</Filter>
     </ClCompile>
     <ClCompile Include="example\doc\sinks_file.cpp">
-      <Filter>sinks</Filter>
+      <Filter>sink</Filter>
     </ClCompile>
     <ClCompile Include="example\doc\sinks_multifile.cpp">
-      <Filter>sinks</Filter>
+      <Filter>sink</Filter>
     </ClCompile>
     <ClCompile Include="example\doc\sinks_ostream.cpp">
-      <Filter>sinks</Filter>
+      <Filter>sink</Filter>
     </ClCompile>
     <ClCompile Include="example\doc\sinks_simple_event_log.cpp">
-      <Filter>sinks</Filter>
+      <Filter>sink</Filter>
     </ClCompile>
     <ClCompile Include="example\doc\sinks_sync.cpp">
-      <Filter>sinks</Filter>
+      <Filter>sink</Filter>
     </ClCompile>
     <ClCompile Include="example\doc\sinks_syslog.cpp">
-      <Filter>sinks</Filter>
+      <Filter>sink</Filter>
     </ClCompile>
     <ClCompile Include="example\doc\sinks_unlocked.cpp">
-      <Filter>sinks</Filter>
+      <Filter>sink</Filter>
     </ClCompile>
     <ClCompile Include="example\doc\sinks_xml_file.cpp">
-      <Filter>sinks</Filter>
+      <Filter>sink</Filter>
     </ClCompile>
     <ClCompile Include="example\doc\sources_net_connection.cpp">
       <Filter>sources</Filter>
@@ -170,8 +170,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
+    <Text Include="ReadMe.txt" />
   </ItemGroup>
 </Project>

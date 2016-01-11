@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <cstddef>
 #include <string>
@@ -49,7 +51,7 @@ BOOST_LOG_INLINE_GLOBAL_LOGGER_INIT(my_logger, my_logger_mt)
     return my_logger_mt(keywords::channel = "my_logger");
 }
 
-void logging_function()
+static void logging_function()
 {
     // Do logging with the severity level. The record will have both
     // the severity level and the channel name attached.
@@ -58,7 +60,7 @@ void logging_function()
 //]
 
 // The operator puts a human-friendly representation of the severity level to the stream
-std::ostream& operator<< (std::ostream& strm, severity_level level)
+static std::ostream& operator<< (std::ostream& strm, severity_level level)
 {
     static const char* strings[] =
     {
@@ -77,7 +79,7 @@ std::ostream& operator<< (std::ostream& strm, severity_level level)
     return strm;
 }
 
-void init()
+static void init()
 {
     typedef sinks::synchronous_sink< sinks::text_ostream_backend > text_sink;
     boost::shared_ptr< text_sink > sink = boost::make_shared< text_sink >();
@@ -101,10 +103,11 @@ void init()
     logging::add_common_attributes();
 }
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_sources, *boost::unit_test::enable_if<sources>())
+BOOST_AUTO_TEST_CASE(sources_severity_channel)
 {
     init();
     logging_function();
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

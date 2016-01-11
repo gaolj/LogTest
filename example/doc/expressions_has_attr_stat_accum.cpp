@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <cstddef>
 #include <string>
@@ -74,7 +76,7 @@ public:
 
 // The function registers two sinks - one for statistic information,
 // and another one for other records
-void init()
+static void init()
 {
     boost::shared_ptr< logging::core > core = logging::core::get();
 
@@ -110,7 +112,7 @@ void init()
         BOOST_LOG(lg) << logging::add_value("Change", (int)(change));\
     } else ((void)0)
 
-void logging_function()
+static void logging_function()
 {
     src::logger lg;
 
@@ -124,10 +126,11 @@ void logging_function()
 }
 //]
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_expressions, *boost::unit_test::enable_if<expressions>())
+BOOST_AUTO_TEST_CASE(expressions_has_attr_stat_accum)
 {
     init();
     logging_function();
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

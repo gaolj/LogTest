@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <stdexcept>
 #include <string>
@@ -39,7 +41,7 @@ enum severity_level
     error
 };
 
-void init_logging()
+static void init_logging()
 {
     // Create an event log sink
     boost::shared_ptr< sink_t > sink(new sink_t());
@@ -65,7 +67,8 @@ void init_logging()
 }
 //]
 
-int main(int argc, char* argv[])
+BOOST_AUTO_TEST_SUITE(ts_sinks, *boost::unit_test::enable_if<bsinks>())
+BOOST_AUTO_TEST_CASE(sinks_simple_event_log)
 {
     try
     {
@@ -82,12 +85,10 @@ int main(int argc, char* argv[])
         BOOST_LOG_SEV(lg, warning) << "Some record for NT event log with warning level";
         BOOST_LOG_SEV(lg, error) << "Some record for NT event log with error level";
 
-        return 0;
     }
     catch (std::exception& e)
     {
         std::cout << "FAILURE: " << e.what() << std::endl;
-        return 1;
     }
 }
 
@@ -99,3 +100,4 @@ int main(int, char*[])
 }
 
 #endif
+BOOST_AUTO_TEST_SUITE_END()

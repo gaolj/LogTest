@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <string>
 #include <fstream>
@@ -27,7 +29,7 @@
 #include <boost/log/utility/setup/filter_parser.hpp>
 #include <boost/log/utility/setup/from_stream.hpp>
 #include <boost/log/utility/setup/from_settings.hpp>
-
+namespace extension_stat_collector_settings {
 namespace logging = boost::log;
 namespace src = boost::log::sources;
 namespace expr = boost::log::expressions;
@@ -186,7 +188,7 @@ public:
     }
 };
 
-void init_factories()
+static void init_factories()
 {
     logging::register_sink_factory("StatCollector", boost::make_shared< stat_collector_factory >());
 }
@@ -199,7 +201,7 @@ const char settings[] =
     "WriteInterval=30\n"
 ;
 
-void init_logging()
+static void init_logging()
 {
     init_factories();
 
@@ -207,7 +209,8 @@ void init_logging()
     logging::init_from_stream(strm);
 }
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_extension, *boost::unit_test::enable_if<extension>())
+BOOST_AUTO_TEST_CASE(extension_stat_collector_settings)
 {
     init_logging();
 
@@ -218,5 +221,6 @@ int main(int, char*[])
 
     logging::core::get()->flush();
 
-    return 0;
+}
+BOOST_AUTO_TEST_SUITE_END()
 }

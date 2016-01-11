@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <cassert>
 #include <cstddef>
@@ -72,13 +74,14 @@ void init_disp()
 }
 
 // Prints the supplied value
-bool print(my_value_base const& val)
+static bool print(my_value_base const& val)
 {
     return val.dispatch(disp);
 }
 //]
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_util, *boost::unit_test::enable_if<util>())
+BOOST_AUTO_TEST_CASE(util_dynamic_type_disp)
 {
     init_disp();
 
@@ -93,5 +96,5 @@ int main(int, char*[])
     res = print(my_value< float >(-4.3f));
     assert(!res);
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

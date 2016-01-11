@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <cstddef>
 #include <string>
@@ -82,7 +84,8 @@ public:
 };
 //]
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_sources, *boost::unit_test::enable_if<sources>())
+BOOST_AUTO_TEST_CASE(sources_net_connection_dynamic_chan)
 {
     // Construct the sink for the "net" channel
     typedef sinks::synchronous_sink< sinks::text_ostream_backend > text_sink;
@@ -136,5 +139,5 @@ int main(int, char*[])
     conn.on_data_sent(321);
     conn.on_disconnected();
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

@@ -13,10 +13,165 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="tutorial">
+      <UniqueIdentifier>{12bc5f5c-05d6-4746-a06a-07e316727664}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources">
+      <UniqueIdentifier>{389d87e1-67c6-4657-935c-3b55a17899d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sinks">
+      <UniqueIdentifier>{ef04a069-56c7-4c9e-8a9e-3d616097da4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extension">
+      <UniqueIdentifier>{1599bf42-d874-4043-a2b8-8b6d7f77ad37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="expressions">
+      <UniqueIdentifier>{58d7d789-b8f4-4c08-9ed8-8032738f0f54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util">
+      <UniqueIdentifier>{f4d285f7-10cc-4561-bf7c-75866e354306}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{ff49f12f-fd28-47f3-8266-03793c2406bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="exception">
+      <UniqueIdentifier>{f048d33d-6c6a-4674-a8ff-f8f0960836eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attr_value">
+      <UniqueIdentifier>{b1ba25b5-1d05-493e-85a4-7c4734862d8e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="example\doc\tutorial_file.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="main.cpp">
+      <Filter>头文件</Filter>
     </ClCompile>
+    <ClCompile Include="example\doc\util_dynamic_type_disp.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\core_core_manual.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\core_record.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\exception_handling.cpp">
+      <Filter>exception</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\attr_value_extraction.cpp">
+      <Filter>attr_value</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\attr_value_visitation.cpp">
+      <Filter>attr_value</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\expressions_attr_fmt_tag.cpp">
+      <Filter>expressions</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\expressions_channel_severity_filter.cpp">
+      <Filter>expressions</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\expressions_has_attr_stat_accum.cpp">
+      <Filter>expressions</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\expressions_keyword_fmt_tag.cpp">
+      <Filter>expressions</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\sinks_async.cpp">
+      <Filter>sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\sinks_async_bounded.cpp">
+      <Filter>sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\sinks_async_ordering.cpp">
+      <Filter>sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\sinks_debugger.cpp">
+      <Filter>sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\sinks_file.cpp">
+      <Filter>sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\sinks_multifile.cpp">
+      <Filter>sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\sinks_ostream.cpp">
+      <Filter>sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\sinks_simple_event_log.cpp">
+      <Filter>sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\sinks_sync.cpp">
+      <Filter>sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\sinks_syslog.cpp">
+      <Filter>sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\sinks_unlocked.cpp">
+      <Filter>sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\sinks_xml_file.cpp">
+      <Filter>sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\sources_net_connection.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\sources_net_connection_chan.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\sources_net_connection_dynamic_chan.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\sources_severity.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\sources_severity_channel.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\tutorial_attributes.cpp">
+      <Filter>tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\tutorial_file.cpp">
+      <Filter>tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\tutorial_file_manual.cpp">
+      <Filter>tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\tutorial_filtering.cpp">
+      <Filter>tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\tutorial_fmt_custom.cpp">
+      <Filter>tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\tutorial_fmt_format.cpp">
+      <Filter>tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\tutorial_fmt_stream.cpp">
+      <Filter>tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\tutorial_fmt_stream_manual.cpp">
+      <Filter>tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\tutorial_fmt_string.cpp">
+      <Filter>tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\tutorial_logging.cpp">
+      <Filter>tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\tutorial_trivial.cpp">
+      <Filter>tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\tutorial_trivial_flt.cpp">
+      <Filter>tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\util_manip_to_log.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\util_static_type_disp.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <boost/log/trivial.hpp>
 #include <boost/log/sources/severity_logger.hpp>
@@ -16,7 +18,7 @@ namespace src = boost::log::sources;
 namespace keywords = boost::log::keywords;
 
 //[ example_tutorial_formatters_string
-void init()
+static void init()
 {
     logging::add_file_log
     (
@@ -26,7 +28,8 @@ void init()
 }
 //]
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_tutorial, *boost::unit_test::enable_if<tutorial>())
+BOOST_AUTO_TEST_CASE(tutorial_fmt_string)
 {
     init();
     logging::add_common_attributes();
@@ -41,5 +44,5 @@ int main(int, char*[])
     BOOST_LOG_SEV(lg, error) << "An error severity message";
     BOOST_LOG_SEV(lg, fatal) << "A fatal severity message";
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

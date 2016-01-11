@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <string>
 #include <iostream>
@@ -46,7 +48,7 @@ public:
 // Complete sink type
 typedef sinks::unlocked_sink< my_backend > sink_t;
 
-void init_logging()
+static void init_logging()
 {
     boost::shared_ptr< logging::core > core = logging::core::get();
 
@@ -65,12 +67,13 @@ void init_logging()
 }
 //]
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_sinks, *boost::unit_test::enable_if<bsinks>())
+BOOST_AUTO_TEST_CASE(sinks_unlocked)
 {
     init_logging();
 
     src::severity_channel_logger< severity_level > lg(keywords::channel = "net");
     BOOST_LOG_SEV(lg, normal) << "Hello world!";
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

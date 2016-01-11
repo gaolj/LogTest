@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <boost/move/utility.hpp>
 #include <boost/log/sources/logger.hpp>
@@ -40,7 +42,8 @@ void logging_function2()
     BOOST_LOG(lg) << "Greetings from the global logger!";
 }
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_tutorial, *boost::unit_test::enable_if<tutorial>())
+BOOST_AUTO_TEST_CASE(tutorial_logging)
 {
     logging::add_file_log("sample.log");
     logging::add_common_attributes();
@@ -48,5 +51,5 @@ int main(int, char*[])
     logging_function1();
     logging_function2();
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

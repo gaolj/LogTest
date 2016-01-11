@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <string>
 #include <fstream>
@@ -147,7 +149,7 @@ void stat_collector::flush()
 // Complete sink type
 typedef sinks::synchronous_sink< stat_collector > sink_t;
 
-void init_logging()
+static void init_logging()
 {
     boost::shared_ptr< logging::core > core = logging::core::get();
 
@@ -156,7 +158,8 @@ void init_logging()
     core->add_sink(sink);
 }
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_extension, *boost::unit_test::enable_if<extension>())
+BOOST_AUTO_TEST_CASE(extension_stat_collector)
 {
     init_logging();
 
@@ -167,5 +170,5 @@ int main(int, char*[])
 
     logging::core::get()->flush();
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

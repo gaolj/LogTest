@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <string>
 #include <iostream>
@@ -52,13 +54,13 @@ std::basic_istream< CharT, TraitsT >& operator>> (std::basic_istream< CharT, Tra
 
 const float epsilon = 0.0001f;
 
-bool operator== (point const& left, point const& right)
+static bool operator== (point const& left, point const& right)
 {
     return (left.m_x - epsilon <= right.m_x && left.m_x + epsilon >= right.m_x) &&
            (left.m_y - epsilon <= right.m_y && left.m_y + epsilon >= right.m_y);
 }
 
-bool operator!= (point const& left, point const& right)
+static bool operator!= (point const& left, point const& right)
 {
     return !(left == right);
 }
@@ -119,7 +121,7 @@ public:
     }
 };
 
-void init_factories()
+static void init_factories()
 {
     //<-
     logging::register_simple_formatter_factory< point, char >("Coordinates");
@@ -128,7 +130,7 @@ void init_factories()
 }
 //]
 
-void init_logging()
+static void init_logging()
 {
     init_factories();
 
@@ -142,7 +144,8 @@ void init_logging()
     logging::add_common_attributes();
 }
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_extension, *boost::unit_test::enable_if<extension>())
+BOOST_AUTO_TEST_CASE(extension_filter_parser)
 {
     init_logging();
 
@@ -158,5 +161,5 @@ int main(int, char*[])
         BOOST_LOG(lg) << "Hello, world with coordinates (20, 20)!"; // this message will be suppressed by filter
     }
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

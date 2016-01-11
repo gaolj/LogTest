@@ -4,7 +4,9 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
-
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
+  
 #include <string>
 #include <fstream>
 #include <iostream>
@@ -34,7 +36,7 @@ enum severity_level
 // Complete sink type
 typedef sinks::asynchronous_sink< sinks::text_ostream_backend > sink_t;
 
-boost::shared_ptr< sink_t > init_logging()
+static boost::shared_ptr< sink_t > init_logging()
 {
     boost::shared_ptr< logging::core > core = logging::core::get();
 
@@ -68,7 +70,7 @@ boost::shared_ptr< sink_t > init_logging()
 //]
 
 //[ example_sinks_async_stop
-void stop_logging(boost::shared_ptr< sink_t >& sink)
+static void stop_logging(boost::shared_ptr< sink_t >& sink)
 {
     boost::shared_ptr< logging::core > core = logging::core::get();
 
@@ -85,7 +87,8 @@ void stop_logging(boost::shared_ptr< sink_t >& sink)
 }
 //]
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_sinks, *boost::unit_test::enable_if<bsinks>())
+BOOST_AUTO_TEST_CASE(sinks_async)
 {
     boost::shared_ptr< sink_t > sink = init_logging();
 
@@ -94,5 +97,5 @@ int main(int, char*[])
 
     stop_logging(sink);
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <fstream>
 #include <boost/smart_ptr/shared_ptr.hpp>
@@ -20,7 +22,7 @@ namespace src = boost::log::sources;
 namespace sinks = boost::log::sinks;
 
 //[ example_tutorial_file_manual
-void init()
+static void init()
 {
     // Construct the sink
     typedef sinks::synchronous_sink< sinks::text_ostream_backend > text_sink;
@@ -35,12 +37,13 @@ void init()
 }
 //]
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_tutorial, *boost::unit_test::enable_if<tutorial>())
+BOOST_AUTO_TEST_CASE(tutorial_file_manual)
 {
     init();
 
     src::logger lg;
     BOOST_LOG(lg) << "Hello world!";
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

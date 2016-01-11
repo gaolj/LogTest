@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <cstddef>
 #include <string>
@@ -33,7 +35,7 @@ struct print_visitor
     }
 };
 
-void print_value(logging::attribute_value const& attr)
+static void print_value(logging::attribute_value const& attr)
 {
     // Define the set of expected types of the stored value
     typedef boost::mpl::vector< int, std::string > types;
@@ -74,7 +76,7 @@ struct hash_visitor
     }
 };
 
-void hash_value(logging::attribute_value const& attr)
+static void hash_value(logging::attribute_value const& attr)
 {
     // Define the set of expected types of the stored value
     typedef boost::mpl::vector< int, std::string > types;
@@ -93,7 +95,7 @@ void hash_value(logging::attribute_value const& attr)
 
 #if 0
 //[ example_attr_value_visitation_with_retval_rec
-void hash_value(logging::record_view const& rec, logging::attribute_name name)
+static void hash_value(logging::record_view const& rec, logging::attribute_name name)
 {
     // Define the set of expected types of the stored value
     typedef boost::mpl::vector< int, std::string > types;
@@ -111,7 +113,8 @@ void hash_value(logging::record_view const& rec, logging::attribute_name name)
 //]
 #endif
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_util, *boost::unit_test::enable_if<util>())
+BOOST_AUTO_TEST_CASE(attr_value_visitation)
 {
     print_value(attrs::make_attribute_value(10));
     print_value(attrs::make_attribute_value(std::string("Hello")));
@@ -119,5 +122,5 @@ int main(int, char*[])
     hash_value(attrs::make_attribute_value(10));
     hash_value(attrs::make_attribute_value(std::string("Hello")));
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

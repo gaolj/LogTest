@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <string>
 #include <fstream>
@@ -42,7 +44,7 @@ typedef sinks::asynchronous_sink<
     >
 > sink_t;
 
-boost::shared_ptr< sink_t > init_logging()
+static boost::shared_ptr< sink_t > init_logging()
 {
     boost::shared_ptr< logging::core > core = logging::core::get();
 
@@ -78,7 +80,7 @@ boost::shared_ptr< sink_t > init_logging()
 }
 //]
 
-void stop_logging(boost::shared_ptr< sink_t >& sink)
+static void stop_logging(boost::shared_ptr< sink_t >& sink)
 {
     boost::shared_ptr< logging::core > core = logging::core::get();
 
@@ -94,7 +96,8 @@ void stop_logging(boost::shared_ptr< sink_t >& sink)
     sink.reset();
 }
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_sinks, *boost::unit_test::enable_if<bsinks>())
+BOOST_AUTO_TEST_CASE(sinks_async_bounded)
 {
     boost::shared_ptr< sink_t > sink = init_logging();
 
@@ -103,5 +106,5 @@ int main(int, char*[])
 
     stop_logging(sink);
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

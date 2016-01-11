@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <cstdlib>
 #include <string>
@@ -69,7 +71,7 @@ std::string severity_level_as_urgency(
 }
 
 // The function initializes the logging library
-void init_logging()
+static void init_logging()
 {
     boost::shared_ptr< logging::core > core = logging::core::get();
 
@@ -114,10 +116,11 @@ void test_notifications()
 }
 //]
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_extension, *boost::unit_test::enable_if<extension>())
+BOOST_AUTO_TEST_CASE(extension_app_launcher)
 {
     init_logging();
     test_notifications();
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

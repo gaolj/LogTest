@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <cstddef>
 #include <string>
@@ -47,7 +49,7 @@ BOOST_LOG_ATTRIBUTE_KEYWORD(tag_attr, "Tag", std::string)
 BOOST_LOG_ATTRIBUTE_KEYWORD(scope, "Scope", attrs::named_scope::value_type)
 BOOST_LOG_ATTRIBUTE_KEYWORD(timeline, "Timeline", attrs::timer::value_type)
 
-void logging_function()
+static void logging_function()
 {
     src::severity_logger< severity_level > slg;
 
@@ -92,7 +94,7 @@ void timed_logging()
 //]
 
 // The operator puts a human-friendly representation of the severity level to the stream
-std::ostream& operator<< (std::ostream& strm, severity_level level)
+static std::ostream& operator<< (std::ostream& strm, severity_level level)
 {
     static const char* strings[] =
     {
@@ -111,7 +113,7 @@ std::ostream& operator<< (std::ostream& strm, severity_level level)
     return strm;
 }
 
-void init()
+static void init()
 {
     typedef sinks::synchronous_sink< sinks::text_ostream_backend > text_sink;
     boost::shared_ptr< text_sink > sink = boost::make_shared< text_sink >();
@@ -143,13 +145,13 @@ void init()
     logging::core::get()->add_global_attribute("Scope", attrs::named_scope());
 }
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_tutorial, *boost::unit_test::enable_if<tutorial>())
+BOOST_AUTO_TEST_CASE(tutorial_attributes)
 {
     init();
 
     named_scope_logging();
     tagged_logging();
     timed_logging();
-
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

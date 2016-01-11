@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <fstream>
 #include <boost/smart_ptr/shared_ptr.hpp>
@@ -24,7 +26,7 @@ namespace sinks = boost::log::sinks;
 namespace keywords = boost::log::keywords;
 
 //[ example_tutorial_formatters_format
-void init()
+static void init()
 {
     typedef sinks::synchronous_sink< sinks::text_ostream_backend > text_sink;
     boost::shared_ptr< text_sink > sink = boost::make_shared< text_sink >();
@@ -47,7 +49,8 @@ void init()
 }
 //]
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_tutorial, *boost::unit_test::enable_if<tutorial>())
+BOOST_AUTO_TEST_CASE(tutorial_fmt_format)
 {
     init();
     logging::add_common_attributes();
@@ -62,5 +65,5 @@ int main(int, char*[])
     BOOST_LOG_SEV(lg, error) << "An error severity message";
     BOOST_LOG_SEV(lg, fatal) << "A fatal severity message";
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

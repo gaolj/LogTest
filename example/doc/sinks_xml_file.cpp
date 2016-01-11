@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <stdexcept>
 #include <string>
@@ -53,7 +55,7 @@ void write_footer(sinks::text_file_backend::stream_type& file)
     file << "</log>\n";
 }
 
-void init_logging()
+static void init_logging()
 {
     // Create a text file sink
     boost::shared_ptr< file_sink > sink(new file_sink(
@@ -80,7 +82,7 @@ void init_logging()
 #endif
 
 //[ example_sinks_xml_file_final
-void init_logging()
+static void init_logging()
 {
     // Create a text file sink
     boost::shared_ptr< file_sink > sink(new file_sink(
@@ -121,7 +123,8 @@ void init_logging()
 
 enum { LOG_RECORDS_TO_WRITE = 2000 };
 
-int main(int argc, char* argv[])
+BOOST_AUTO_TEST_SUITE(ts_sinks, *boost::unit_test::enable_if<bsinks>())
+BOOST_AUTO_TEST_CASE(sinks_xml_file)
 {
     try
     {
@@ -142,11 +145,10 @@ int main(int argc, char* argv[])
         // Test that XML character decoration works
         BOOST_LOG(lg) << "Special XML characters: &, <, >, \", '";
 
-        return 0;
     }
     catch (std::exception& e)
     {
         std::cout << "FAILURE: " << e.what() << std::endl;
-        return 1;
     }
 }
+BOOST_AUTO_TEST_SUITE_END()

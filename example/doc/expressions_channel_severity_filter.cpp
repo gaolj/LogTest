@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <cstddef>
 #include <iostream>
@@ -35,7 +37,7 @@ BOOST_LOG_ATTRIBUTE_KEYWORD(severity, "Severity", severity_level)
 BOOST_LOG_ATTRIBUTE_KEYWORD(channel, "Channel", std::string)
 
 //<-
-std::ostream& operator<< (std::ostream& strm, severity_level level)
+static std::ostream& operator<< (std::ostream& strm, severity_level level)
 {
     static const char* strings[] =
     {
@@ -55,7 +57,7 @@ std::ostream& operator<< (std::ostream& strm, severity_level level)
 }
 //->
 
-void init()
+static void init()
 {
     // Create a minimal severity table filter
     typedef expr::channel_severity_filter_actor< std::string, severity_level > min_severity_filter;
@@ -94,7 +96,8 @@ void test_logging(logger_type& lg, std::string const& channel_name)
 }
 //]
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_expressions, *boost::unit_test::enable_if<expressions>())
+BOOST_AUTO_TEST_CASE(expressions_channel_severity_filter)
 {
     init();
     logging::add_common_attributes();
@@ -105,5 +108,5 @@ int main(int, char*[])
     test_logging(lg, "gui");
     test_logging(lg, "filesystem");
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

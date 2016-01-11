@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <cstddef>
 #include <string>
@@ -45,7 +47,7 @@ enum severity_level
 };
 
 // The operator puts a human-friendly representation of the severity level to the stream
-std::ostream& operator<< (std::ostream& strm, severity_level level)
+static std::ostream& operator<< (std::ostream& strm, severity_level level)
 {
     static const char* strings[] =
     {
@@ -69,7 +71,7 @@ BOOST_LOG_ATTRIBUTE_KEYWORD(line_id, "LineID", unsigned int)
 BOOST_LOG_ATTRIBUTE_KEYWORD(severity, "Severity", severity_level)
 BOOST_LOG_ATTRIBUTE_KEYWORD(tag_attr, "Tag", std::string)
 
-void init()
+static void init()
 {
     // Setup the common formatter for all sinks
     logging::formatter fmt = expr::stream
@@ -117,7 +119,7 @@ bool my_filter(logging::value_ref< severity_level, tag::severity > const& level,
     return level >= warning || tag == "IMPORTANT_MESSAGE";
 }
 
-void init()
+static void init()
 {
     //<-
 
@@ -169,7 +171,7 @@ void init()
 
 #endif
 
-void logging_function()
+static void logging_function()
 {
     src::severity_logger< severity_level > slg;
 
@@ -183,11 +185,12 @@ void logging_function()
     }
 }
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_tutorial, *boost::unit_test::enable_if<tutorial>())
+BOOST_AUTO_TEST_CASE(tutorial_filtering)
 {
     init();
 
     logging_function();
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

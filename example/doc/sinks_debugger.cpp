@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <boost/smart_ptr/shared_ptr.hpp>
 #include <boost/log/core.hpp>
@@ -24,7 +26,7 @@ namespace sinks = boost::log::sinks;
 // Complete sink type
 typedef sinks::synchronous_sink< sinks::debug_output_backend > sink_t;
 
-void init_logging()
+static void init_logging()
 {
     boost::shared_ptr< logging::core > core = logging::core::get();
 
@@ -39,14 +41,14 @@ void init_logging()
 }
 //]
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_sinks, *boost::unit_test::enable_if<bsinks>())
+BOOST_AUTO_TEST_CASE(sinks_debugger)
 {
     init_logging();
 
     src::logger lg;
     BOOST_LOG(lg) << "Hello world!";
 
-    return 0;
 }
 
 #else
@@ -57,3 +59,4 @@ int main(int, char*[])
 }
 
 #endif
+BOOST_AUTO_TEST_SUITE_END()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            

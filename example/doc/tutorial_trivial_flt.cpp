@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <boost/log/core.hpp>
 #include <boost/log/trivial.hpp>
@@ -12,7 +14,7 @@
 namespace logging = boost::log;
 
 //[ example_tutorial_trivial_with_filtering
-void init()
+static void init()
 {
     logging::core::get()->set_filter
     (
@@ -20,7 +22,8 @@ void init()
     );
 }
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_tutorial, *boost::unit_test::enable_if<tutorial>())
+BOOST_AUTO_TEST_CASE(tutorial_trivial_flt)
 {
     init();
 
@@ -31,6 +34,6 @@ int main(int, char*[])
     BOOST_LOG_TRIVIAL(error) << "An error severity message";
     BOOST_LOG_TRIVIAL(fatal) << "A fatal severity message";
 
-    return 0;
 }
 //]
+BOOST_AUTO_TEST_SUITE_END()

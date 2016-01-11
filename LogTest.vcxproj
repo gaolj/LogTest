@@ -19,7 +19,51 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="example\doc\attr_value_extraction.cpp" />
+    <ClCompile Include="example\doc\attr_value_visitation.cpp" />
+    <ClCompile Include="example\doc\core_core_manual.cpp" />
+    <ClCompile Include="example\doc\core_record.cpp" />
+    <ClCompile Include="example\doc\exception_handling.cpp" />
+    <ClCompile Include="example\doc\expressions_attr_fmt_tag.cpp" />
+    <ClCompile Include="example\doc\expressions_channel_severity_filter.cpp" />
+    <ClCompile Include="example\doc\expressions_has_attr_stat_accum.cpp" />
+    <ClCompile Include="example\doc\expressions_keyword_fmt_tag.cpp" />
+    <ClCompile Include="example\doc\sinks_async.cpp" />
+    <ClCompile Include="example\doc\sinks_async_bounded.cpp" />
+    <ClCompile Include="example\doc\sinks_async_ordering.cpp" />
+    <ClCompile Include="example\doc\sinks_debugger.cpp" />
+    <ClCompile Include="example\doc\sinks_file.cpp" />
+    <ClCompile Include="example\doc\sinks_multifile.cpp" />
+    <ClCompile Include="example\doc\sinks_ostream.cpp" />
+    <ClCompile Include="example\doc\sinks_simple_event_log.cpp" />
+    <ClCompile Include="example\doc\sinks_sync.cpp" />
+    <ClCompile Include="example\doc\sinks_syslog.cpp" />
+    <ClCompile Include="example\doc\sinks_unlocked.cpp" />
+    <ClCompile Include="example\doc\sinks_xml_file.cpp" />
+    <ClCompile Include="example\doc\sources_net_connection.cpp" />
+    <ClCompile Include="example\doc\sources_net_connection_chan.cpp" />
+    <ClCompile Include="example\doc\sources_net_connection_dynamic_chan.cpp" />
+    <ClCompile Include="example\doc\sources_severity.cpp" />
+    <ClCompile Include="example\doc\sources_severity_channel.cpp" />
+    <ClCompile Include="example\doc\tutorial_attributes.cpp" />
     <ClCompile Include="example\doc\tutorial_file.cpp" />
+    <ClCompile Include="example\doc\tutorial_file_manual.cpp" />
+    <ClCompile Include="example\doc\tutorial_filtering.cpp" />
+    <ClCompile Include="example\doc\tutorial_fmt_custom.cpp" />
+    <ClCompile Include="example\doc\tutorial_fmt_format.cpp" />
+    <ClCompile Include="example\doc\tutorial_fmt_stream.cpp" />
+    <ClCompile Include="example\doc\tutorial_fmt_stream_manual.cpp" />
+    <ClCompile Include="example\doc\tutorial_fmt_string.cpp" />
+    <ClCompile Include="example\doc\tutorial_logging.cpp" />
+    <ClCompile Include="example\doc\tutorial_trivial.cpp" />
+    <ClCompile Include="example\doc\tutorial_trivial_flt.cpp" />
+    <ClCompile Include="example\doc\util_dynamic_type_disp.cpp" />
+    <ClCompile Include="example\doc\util_manip_to_log.cpp" />
+    <ClCompile Include="example\doc\util_static_type_disp.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4076F803-47B4-4FEC-9857-E112CE4F82BB}</ProjectGuid>
@@ -92,7 +136,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Program Files\boost_1_59_0;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Program Files\boost_1_59_0;.\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,7 +168,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Program Files\boost_1_59_0;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Program Files\boost_1_59_0;.\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

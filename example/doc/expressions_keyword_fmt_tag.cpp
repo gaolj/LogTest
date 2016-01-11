@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <cstddef>
 #include <iostream>
@@ -36,7 +38,7 @@ BOOST_LOG_ATTRIBUTE_KEYWORD(line_id, "LineID", unsigned int)
 BOOST_LOG_ATTRIBUTE_KEYWORD(severity, "Severity", severity_level)
 
 // The operator is used for regular stream formatting
-std::ostream& operator<< (std::ostream& strm, severity_level level)
+static std::ostream& operator<< (std::ostream& strm, severity_level level)
 {
     static const char* strings[] =
     {
@@ -80,7 +82,7 @@ logging::formatting_ostream& operator<<
     return strm;
 }
 
-void init()
+static void init()
 {
     logging::add_console_log
     (
@@ -108,7 +110,8 @@ void print_severity(logging::record_view const& rec)
 //]
 
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_expressions, *boost::unit_test::enable_if<expressions>())
+BOOST_AUTO_TEST_CASE(expressions_keyword_fmt_tag)
 {
     init();
     logging::add_common_attributes();
@@ -125,5 +128,5 @@ int main(int, char*[])
     // This line will still use lower-case severity levels
     std::cout << "The regular output still uses lower-case formatting: " << normal << std::endl;
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

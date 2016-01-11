@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <boost/date_time/posix_time/posix_time_types.hpp>
 #include <boost/log/trivial.hpp>
@@ -22,7 +24,7 @@ namespace keywords = boost::log::keywords;
 #if 1
 
 //[ example_tutorial_formatters_stream
-void init()
+static void init()
 {
     logging::add_file_log
     (
@@ -44,7 +46,7 @@ void init()
 #else
 
 //[ example_tutorial_formatters_stream_date_time
-void init()
+static void init()
 {
     logging::add_file_log
     (
@@ -65,7 +67,8 @@ void init()
 
 #endif
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_tutorial, *boost::unit_test::enable_if<tutorial>())
+BOOST_AUTO_TEST_CASE(tutorial_fmt_stream)
 {
     init();
     logging::add_common_attributes();
@@ -80,5 +83,5 @@ int main(int, char*[])
     BOOST_LOG_SEV(lg, error) << "An error severity message";
     BOOST_LOG_SEV(lg, fatal) << "A fatal severity message";
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

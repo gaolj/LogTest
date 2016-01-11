@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <string>
 #include <fstream>
@@ -21,7 +23,7 @@ namespace sinks = boost::log::sinks;
 namespace keywords = boost::log::keywords;
 
 //[ example_sinks_file
-void init_logging()
+static void init_logging()
 {
     boost::shared_ptr< logging::core > core = logging::core::get();
 
@@ -41,12 +43,13 @@ void init_logging()
 }
 //]
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_sinks, *boost::unit_test::enable_if<bsinks>())
+BOOST_AUTO_TEST_CASE(sinks_file)
 {
     init_logging();
 
     src::severity_channel_logger< > lg(keywords::channel = "net");
     BOOST_LOG_SEV(lg, 3) << "Hello world!";
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

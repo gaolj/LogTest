@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <string>
 #include <iostream>
@@ -99,13 +101,13 @@ public:
     }
 };
 
-void init_factories()
+static void init_factories()
 {
     logging::register_formatter_factory("Coordinates", boost::make_shared< point_formatter_factory >());
 }
 //]
 
-void init_logging()
+static void init_logging()
 {
     init_factories();
 
@@ -114,12 +116,13 @@ void init_logging()
     logging::add_common_attributes();
 }
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_extension, *boost::unit_test::enable_if<extension>())
+BOOST_AUTO_TEST_CASE(extension_formatter_parser)
 {
     init_logging();
 
     src::logger lg;
     BOOST_LOG(lg) << logging::add_value("Coordinates", point(10.5f, 20.2f)) << "Hello, world with coordinates!";
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

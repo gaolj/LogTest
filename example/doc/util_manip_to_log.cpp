@@ -4,6 +4,8 @@
  *    (See accompanying file LICENSE_1_0.txt or copy at
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
+#include <boost/test/unit_test.hpp> 
+#include "main.h"
 
 #include <cstddef>
 #include <iomanip>
@@ -64,10 +66,11 @@ void test_manip_with_tag()
 //]
 
 
-int main(int, char*[])
+BOOST_AUTO_TEST_SUITE(ts_util, *boost::unit_test::enable_if<util>())
+BOOST_AUTO_TEST_CASE(util_manip_to_log)
 {
     test_manip();
     test_manip_with_tag();
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

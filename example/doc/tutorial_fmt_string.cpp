@@ -5,7 +5,7 @@
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
 #include <boost/test/unit_test.hpp> 
-#include "main.h"
+
 
 #include <boost/log/trivial.hpp>
 #include <boost/log/sources/severity_logger.hpp>
@@ -28,7 +28,7 @@ static void init()
 }
 //]
 
-BOOST_AUTO_TEST_SUITE(ts_tutorial, *boost::unit_test::enable_if<tutorial>())
+BOOST_AUTO_TEST_SUITE(tutorial)
 BOOST_AUTO_TEST_CASE(tutorial_fmt_string)
 {
     init();

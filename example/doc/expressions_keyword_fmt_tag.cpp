@@ -5,7 +5,7 @@
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
 #include <boost/test/unit_test.hpp> 
-#include "main.h"
+
 
 #include <cstddef>
 #include <iostream>
@@ -110,7 +110,7 @@ void print_severity(logging::record_view const& rec)
 //]
 
 
-BOOST_AUTO_TEST_SUITE(ts_expressions, *boost::unit_test::enable_if<expressions>())
+BOOST_AUTO_TEST_SUITE(expressions)
 BOOST_AUTO_TEST_CASE(expressions_keyword_fmt_tag)
 {
     init();

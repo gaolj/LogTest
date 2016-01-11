@@ -5,7 +5,7 @@
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
 #include <boost/test/unit_test.hpp> 
-#include "main.h"
+
 
 #include <cstddef>
 #include <string>
@@ -156,7 +156,7 @@ void init()
     init_exception_handler();
 }
 
-BOOST_AUTO_TEST_SUITE(ts_exception, *boost::unit_test::enable_if<exception>())
+BOOST_AUTO_TEST_SUITE(exception)
 BOOST_AUTO_TEST_CASE(exception_handling)
 {
     init();

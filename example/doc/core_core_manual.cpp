@@ -5,7 +5,7 @@
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
 #include <boost/test/unit_test.hpp> 
-#include "main.h"
+
 
 #include <boost/smart_ptr/shared_ptr.hpp>
 #include <boost/move/utility.hpp>
@@ -34,7 +34,7 @@ void logging_function(logging::attribute_set const& attrs)
 }
 //]
 
-BOOST_AUTO_TEST_SUITE(ts_core, *boost::unit_test::enable_if<core>())
+BOOST_AUTO_TEST_SUITE(core)
 BOOST_AUTO_TEST_CASE(core_core_manual)
 {
     logging_function(logging::attribute_set());

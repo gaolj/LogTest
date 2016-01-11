@@ -5,7 +5,7 @@
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
 #include <boost/test/unit_test.hpp> 
-#include "main.h"
+
 
 #include <cstddef>
 #include <string>
@@ -122,7 +122,7 @@ static void hash_value(logging::record_view const& rec, logging::attribute_name 
 //]
 #endif
 
-BOOST_AUTO_TEST_SUITE(ts_attr_value, *boost::unit_test::enable_if<attr_value>())
+BOOST_AUTO_TEST_SUITE(attr_value)
 BOOST_AUTO_TEST_CASE(attr_value_extraction)
 {
     print_value(attrs::make_attribute_value(10));

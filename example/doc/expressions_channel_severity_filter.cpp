@@ -5,7 +5,7 @@
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
 #include <boost/test/unit_test.hpp> 
-#include "main.h"
+
 
 #include <cstddef>
 #include <iostream>
@@ -96,7 +96,7 @@ void test_logging(logger_type& lg, std::string const& channel_name)
 }
 //]
 
-BOOST_AUTO_TEST_SUITE(ts_expressions, *boost::unit_test::enable_if<expressions>())
+BOOST_AUTO_TEST_SUITE(expressions)
 BOOST_AUTO_TEST_CASE(expressions_channel_severity_filter)
 {
     init();

@@ -5,12 +5,12 @@
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
 #include <boost/test/unit_test.hpp> 
-#include "main.h"
+
 
 //[ example_tutorial_trivial
 #include <boost/log/trivial.hpp>
 
-BOOST_AUTO_TEST_SUITE(ts_tutorial, *boost::unit_test::enable_if<tutorial>())
+BOOST_AUTO_TEST_SUITE(tutorial)
 BOOST_AUTO_TEST_CASE(tutorial_trivial)
 {
     BOOST_LOG_TRIVIAL(trace) << "A trace severity message";

@@ -5,7 +5,7 @@
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
 #include <boost/test/unit_test.hpp> 
-#include "main.h"
+
 
 #include <cassert>
 #include <cstddef>
@@ -79,7 +79,7 @@ bool print(my_value_base const& val)
 }
 //]
 
-BOOST_AUTO_TEST_SUITE(ts_util, *boost::unit_test::enable_if<util>())
+BOOST_AUTO_TEST_SUITE(util)
 BOOST_AUTO_TEST_CASE(util_static_type_disp)
 {
     // These two attributes are supported by the dispatcher

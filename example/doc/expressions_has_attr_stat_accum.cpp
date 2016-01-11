@@ -5,7 +5,7 @@
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
 #include <boost/test/unit_test.hpp> 
-#include "main.h"
+
 
 #include <cstddef>
 #include <string>
@@ -126,7 +126,7 @@ static void logging_function()
 }
 //]
 
-BOOST_AUTO_TEST_SUITE(ts_expressions, *boost::unit_test::enable_if<expressions>())
+BOOST_AUTO_TEST_SUITE(expressions)
 BOOST_AUTO_TEST_CASE(expressions_has_attr_stat_accum)
 {
     init();

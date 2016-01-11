@@ -5,7 +5,7 @@
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
 #include <boost/test/unit_test.hpp> 
-#include "main.h"
+
 
 #include <boost/date_time/posix_time/posix_time_types.hpp>
 #include <boost/log/trivial.hpp>
@@ -67,7 +67,7 @@ static void init()
 
 #endif
 
-BOOST_AUTO_TEST_SUITE(ts_tutorial, *boost::unit_test::enable_if<tutorial>())
+BOOST_AUTO_TEST_SUITE(tutorial)
 BOOST_AUTO_TEST_CASE(tutorial_fmt_stream)
 {
     init();

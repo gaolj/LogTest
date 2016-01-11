@@ -5,7 +5,7 @@
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
 #include <boost/test/unit_test.hpp> 
-#include "main.h"
+
 
 #include <stdexcept>
 #include <string>
@@ -67,7 +67,7 @@ static void init_logging()
 }
 //]
 
-BOOST_AUTO_TEST_SUITE(ts_sinks, *boost::unit_test::enable_if<bsinks>())
+BOOST_AUTO_TEST_SUITE(sink)
 BOOST_AUTO_TEST_CASE(sinks_simple_event_log)
 {
     try

@@ -5,7 +5,7 @@
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
 #include <boost/test/unit_test.hpp> 
-#include "main.h"
+
 
 #include <string>
 #include <boost/smart_ptr/shared_ptr.hpp>
@@ -82,7 +82,7 @@ void init_builtin_syslog()
 //->
 //]
 
-BOOST_AUTO_TEST_SUITE(ts_sinks, *boost::unit_test::enable_if<bsinks>())
+BOOST_AUTO_TEST_SUITE(sink)
 BOOST_AUTO_TEST_CASE(sinks_syslog)
 {
 #if defined(BOOST_LOG_USE_NATIVE_SYSLOG)

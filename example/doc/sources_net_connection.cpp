@@ -5,7 +5,7 @@
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
 #include <boost/test/unit_test.hpp> 
-#include "main.h"
+
 
 #include <cstddef>
 #include <string>
@@ -80,7 +80,7 @@ public:
 };
 //]
 
-BOOST_AUTO_TEST_SUITE(ts_sources, *boost::unit_test::enable_if<sources>())
+BOOST_AUTO_TEST_SUITE(sources)
 BOOST_AUTO_TEST_CASE(sources_net_connection)
 {
     // Construct the sink

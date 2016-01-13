@@ -41,7 +41,7 @@ BOOST_LOG_ATTRIBUTE_KEYWORD(sent_size, "SentSize", std::size_t)
 // Define a global logger
 BOOST_LOG_INLINE_GLOBAL_LOGGER_CTOR_ARGS(my_logger, src::channel_logger_mt< >, (keywords::channel = "general"))
 
-class network_connection
+class network_connection2
 {
     std::string m_remote_addr;
 
@@ -132,7 +132,7 @@ BOOST_AUTO_TEST_CASE(sources_net_connection_dynamic_chan)
     logging::add_common_attributes();
 
     // Emulate network activity
-    network_connection conn;
+    network_connection2 conn;
 
     conn.on_connected("11.22.33.44");
     conn.on_data_received(123);

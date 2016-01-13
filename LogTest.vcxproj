@@ -19,6 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="example\advanced_usage\advanced_usage.cpp" />
+    <ClCompile Include="example\async_log\async_log.cpp" />
+    <ClCompile Include="example\basic_usage\basic_usage.cpp" />
+    <ClCompile Include="example\bounded_async_log\bounded_async_log.cpp" />
     <ClCompile Include="example\doc\attr_value_extraction.cpp" />
     <ClCompile Include="example\doc\attr_value_visitation.cpp" />
     <ClCompile Include="example\doc\core_core_manual.cpp" />
@@ -60,6 +64,17 @@
     <ClCompile Include="example\doc\util_dynamic_type_disp.cpp" />
     <ClCompile Include="example\doc\util_manip_to_log.cpp" />
     <ClCompile Include="example\doc\util_static_type_disp.cpp" />
+    <ClCompile Include="example\event_log\event_log.cpp" />
+    <ClCompile Include="example\keywords\keywords.cpp" />
+    <ClCompile Include="example\multiple_files\multiple_files.cpp" />
+    <ClCompile Include="example\multiple_threads\multiple_threads.cpp" />
+    <ClCompile Include="example\native_syslog\native_syslog.cpp" />
+    <ClCompile Include="example\rotating_file\rotating_file.cpp" />
+    <ClCompile Include="example\settings_file\settings_file.cpp" />
+    <ClCompile Include="example\settings_file_formatter_factory\settings_file_formatter_factory.cpp" />
+    <ClCompile Include="example\syslog\syslog.cpp" />
+    <ClCompile Include="example\trivial\trivial.cpp" />
+    <ClCompile Include="example\wide_char\wide_char.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

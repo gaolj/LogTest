@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="tutorial">
-      <UniqueIdentifier>{12bc5f5c-05d6-4746-a06a-07e316727664}</UniqueIdentifier>
-    </Filter>
     <Filter Include="sources">
       <UniqueIdentifier>{389d87e1-67c6-4657-935c-3b55a17899d1}</UniqueIdentifier>
     </Filter>
@@ -39,6 +36,12 @@
     </Filter>
     <Filter Include="sink">
       <UniqueIdentifier>{ef04a069-56c7-4c9e-8a9e-3d616097da4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tutorial">
+      <UniqueIdentifier>{12bc5f5c-05d6-4746-a06a-07e316727664}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="single">
+      <UniqueIdentifier>{4786d0fe-16e1-4f12-92f4-9778f3acec2f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +170,51 @@
     </ClCompile>
     <ClCompile Include="example\doc\util_static_type_disp.cpp">
       <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="example\async_log\async_log.cpp">
+      <Filter>single</Filter>
+    </ClCompile>
+    <ClCompile Include="example\advanced_usage\advanced_usage.cpp">
+      <Filter>single</Filter>
+    </ClCompile>
+    <ClCompile Include="example\basic_usage\basic_usage.cpp">
+      <Filter>single</Filter>
+    </ClCompile>
+    <ClCompile Include="example\bounded_async_log\bounded_async_log.cpp">
+      <Filter>single</Filter>
+    </ClCompile>
+    <ClCompile Include="example\keywords\keywords.cpp">
+      <Filter>single</Filter>
+    </ClCompile>
+    <ClCompile Include="example\multiple_files\multiple_files.cpp">
+      <Filter>single</Filter>
+    </ClCompile>
+    <ClCompile Include="example\multiple_threads\multiple_threads.cpp">
+      <Filter>single</Filter>
+    </ClCompile>
+    <ClCompile Include="example\native_syslog\native_syslog.cpp">
+      <Filter>single</Filter>
+    </ClCompile>
+    <ClCompile Include="example\rotating_file\rotating_file.cpp">
+      <Filter>single</Filter>
+    </ClCompile>
+    <ClCompile Include="example\settings_file\settings_file.cpp">
+      <Filter>single</Filter>
+    </ClCompile>
+    <ClCompile Include="example\settings_file_formatter_factory\settings_file_formatter_factory.cpp">
+      <Filter>single</Filter>
+    </ClCompile>
+    <ClCompile Include="example\syslog\syslog.cpp">
+      <Filter>single</Filter>
+    </ClCompile>
+    <ClCompile Include="example\trivial\trivial.cpp">
+      <Filter>single</Filter>
+    </ClCompile>
+    <ClCompile Include="example\wide_char\wide_char.cpp">
+      <Filter>single</Filter>
+    </ClCompile>
+    <ClCompile Include="example\event_log\event_log.cpp">
+      <Filter>single</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

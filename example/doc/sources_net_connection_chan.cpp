@@ -37,13 +37,13 @@ BOOST_LOG_ATTRIBUTE_KEYWORD(received_size, "ReceivedSize", std::size_t)
 BOOST_LOG_ATTRIBUTE_KEYWORD(sent_size, "SentSize", std::size_t)
 
 //[ example_sources_network_connection_channels
-class network_connection
+class network_connection1
 {
     src::channel_logger< > m_net, m_stat;
     logging::attribute_set::iterator m_net_remote_addr, m_stat_remote_addr;
 
 public:
-    network_connection() :
+	network_connection1() :
         // We can dump network-related messages through this logger
         // and be able to filter them later
         m_net(keywords::channel = "net"),
@@ -134,7 +134,7 @@ BOOST_AUTO_TEST_CASE(sources_net_connection_chan)
     logging::add_common_attributes();
 
     // Emulate network activity
-    network_connection conn;
+    network_connection1 conn;
 
     conn.on_connected("11.22.33.44");
     conn.on_data_received(123);

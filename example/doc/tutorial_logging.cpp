@@ -18,7 +18,7 @@ namespace logging = boost::log;
 namespace src = boost::log::sources;
 namespace keywords = boost::log::keywords;
 
-BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT(my_logger, src::logger_mt)
+BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT(my_logger3, src::logger_mt)
 
 void logging_function1()
 {
@@ -38,7 +38,7 @@ void logging_function1()
 
 void logging_function2()
 {
-    src::logger_mt& lg = my_logger::get();
+    src::logger_mt& lg = my_logger3::get();
     BOOST_LOG(lg) << "Greetings from the global logger!";
 }
 
@@ -49,7 +49,7 @@ BOOST_AUTO_TEST_CASE(tutorial_logging)
     logging::add_common_attributes();
 
     logging_function1();
-    //logging_function2();
+    logging_function2();
 
 }
 BOOST_AUTO_TEST_SUITE_END()

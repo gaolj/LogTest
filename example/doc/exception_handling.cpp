@@ -58,7 +58,7 @@ class my_logger_mt :
     BOOST_LOG_FORWARD_LOGGER_MEMBERS(my_logger_mt)
 };
 
-BOOST_LOG_INLINE_GLOBAL_LOGGER_INIT(my_logger, my_logger_mt)
+BOOST_LOG_INLINE_GLOBAL_LOGGER_INIT(my_logger1, my_logger_mt)
 {
     my_logger_mt lg;
 
@@ -72,7 +72,7 @@ BOOST_LOG_INLINE_GLOBAL_LOGGER_INIT(my_logger, my_logger_mt)
 void logging_function()
 {
     // This will not throw
-    BOOST_LOG_SEV(my_logger::get(), normal) << "Hello, world";
+    BOOST_LOG_SEV(my_logger1::get(), normal) << "Hello, world";
 }
 //]
 

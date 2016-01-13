@@ -16,6 +16,7 @@
  */
 
 // #define BOOST_LOG_DYN_LINK 1
+#include <boost/test/unit_test.hpp> 
 
 #include <stdexcept>
 #include <string>
@@ -45,7 +46,8 @@ enum severity_levels
     error
 };
 
-int main(int argc, char* argv[])
+BOOST_AUTO_TEST_SUITE(single)
+BOOST_AUTO_TEST_CASE(syslog)
 {
     try
     {
@@ -83,11 +85,10 @@ int main(int argc, char* argv[])
         BOOST_LOG_SEV(lg, warning) << "A syslog record with warning level";
         BOOST_LOG_SEV(lg, error) << "A syslog record with error level";
 
-        return 0;
     }
     catch (std::exception& e)
     {
         std::cout << "FAILURE: " << e.what() << std::endl;
-        return 1;
     }
 }
+BOOST_AUTO_TEST_SUITE_END()

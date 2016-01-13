@@ -11,6 +11,7 @@
  *
  * \brief  An example of wide character logging.
  */
+#include <boost/test/unit_test.hpp> 
 
 #include <iostream>
 #include <boost/locale/generator.hpp>
@@ -66,7 +67,7 @@ inline std::basic_ostream< CharT, TraitsT >& operator<< (
 BOOST_LOG_ATTRIBUTE_KEYWORD(severity, "Severity", severity_level)
 BOOST_LOG_ATTRIBUTE_KEYWORD(timestamp, "TimeStamp", boost::posix_time::ptime)
 
-void init_logging()
+static void init_logging()
 {
     boost::shared_ptr< sinks::synchronous_sink< sinks::text_file_backend > > sink = logging::add_file_log
     (
@@ -111,11 +112,12 @@ void test_wide_char_logging()
 }
 //]
 
-int main(int argc, char* argv[])
+BOOST_AUTO_TEST_SUITE(single)
+BOOST_AUTO_TEST_CASE(wide_char)
 {
     init_logging();
     test_narrow_char_logging();
     test_wide_char_logging();
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

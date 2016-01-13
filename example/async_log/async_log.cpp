@@ -52,7 +52,7 @@ enum
 BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT(test_lg, src::logger_mt)
 
 //! This function is executed in multiple threads
-void thread_fun(boost::barrier& bar)
+static void thread_fun(boost::barrier& bar)
 {
     // Wait until all threads are created
     bar.wait();
@@ -67,8 +67,8 @@ void thread_fun(boost::barrier& bar)
     }
 }
 
-BOOST_AUTO_TEST_SUITE(async_log)
-BOOST_AUTO_TEST_CASE(async_log, *boost::unit_test::label("GLOBAL_LOGGER"))
+BOOST_AUTO_TEST_SUITE(single)
+BOOST_AUTO_TEST_CASE(async_log)
 {
     try
     {

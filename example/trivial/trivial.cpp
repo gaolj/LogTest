@@ -14,12 +14,14 @@
 
 // #define BOOST_ALL_DYN_LINK 1
 // #define BOOST_LOG_DYN_LINK 1
+#include <boost/test/unit_test.hpp> 
 
 #include <boost/log/trivial.hpp>
 #include <boost/log/core.hpp>
 #include <boost/log/expressions.hpp>
 
-int main(int argc, char* argv[])
+BOOST_AUTO_TEST_SUITE(single)
+BOOST_AUTO_TEST_CASE(trivial)
 {
     // Trivial logging: all log records are written into a file
     BOOST_LOG_TRIVIAL(trace) << "A trace severity message";
@@ -34,7 +36,7 @@ int main(int argc, char* argv[])
 
     core::get()->set_filter
     (
-        trivial::severity >= trivial::info
+		boost::log::trivial::severity >= boost::log::trivial::info
     );
 
     // Now the first two lines will not pass the filter
@@ -45,5 +47,5 @@ int main(int argc, char* argv[])
     BOOST_LOG_TRIVIAL(error) << "An error severity message";
     BOOST_LOG_TRIVIAL(fatal) << "A fatal severity message";
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

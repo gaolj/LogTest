@@ -16,6 +16,7 @@
  */
 
 // #define BOOST_LOG_DYN_LINK 1
+#include <boost/test/unit_test.hpp> 
 
 #include <stdexcept>
 #include <string>
@@ -95,10 +96,11 @@ int main(int argc, char* argv[])
 
 #else // defined(BOOST_LOG_USE_NATIVE_SYSLOG)
 
-int main (int, char*[])
+BOOST_AUTO_TEST_SUITE(single)
+BOOST_AUTO_TEST_CASE(native_syslog)
 {
     std::cout << "Native syslog API is not supported on this platform" << std::endl;
-    return 0;
 }
 
 #endif // defined(BOOST_LOG_USE_NATIVE_SYSLOG)
+BOOST_AUTO_TEST_SUITE_END()

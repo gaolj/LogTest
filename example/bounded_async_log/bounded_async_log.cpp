@@ -13,6 +13,7 @@
  */
 
 // #define BOOST_LOG_DYN_LINK 1
+#include <boost/test/unit_test.hpp> 
 
 #include <stdexcept>
 #include <string>
@@ -51,7 +52,7 @@ enum
 BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT(test_lg, src::logger_mt)
 
 //! This function is executed in multiple threads
-void thread_fun(boost::barrier& bar)
+static void thread_fun(boost::barrier& bar)
 {
     // Wait until all threads are created
     bar.wait();
@@ -66,7 +67,8 @@ void thread_fun(boost::barrier& bar)
     }
 }
 
-int main(int argc, char* argv[])
+BOOST_AUTO_TEST_SUITE(single)
+BOOST_AUTO_TEST_CASE(bounded_async_log)
 {
     try
     {
@@ -121,11 +123,10 @@ int main(int argc, char* argv[])
         sink->stop();
         sink->flush();
 
-        return 0;
     }
     catch (std::exception& e)
     {
         std::cout << "FAILURE: " << e.what() << std::endl;
-        return 1;
     }
 }
+BOOST_AUTO_TEST_SUITE_END()

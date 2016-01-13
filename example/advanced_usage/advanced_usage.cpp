@@ -17,6 +17,7 @@
 // #define BOOST_LOG_USE_CHAR
 // #define BOOST_ALL_DYN_LINK 1
 // #define BOOST_LOG_DYN_LINK 1
+#include <boost/test/unit_test.hpp> 
 
 #include <cassert>
 #include <iostream>
@@ -78,7 +79,8 @@ int foo(src::logger& lg)
     return 10;
 }
 
-int main(int argc, char* argv[])
+BOOST_AUTO_TEST_SUITE(single)
+BOOST_AUTO_TEST_CASE(advanced_usage)
 {
     // This is a in-depth tutorial/example of Boost.Log usage
 
@@ -296,5 +298,5 @@ int main(int argc, char* argv[])
     // be processed in the order of evaluation:
     BOOST_LOG(lg) << "The result of foo is " << foo(lg);
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

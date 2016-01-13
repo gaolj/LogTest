@@ -17,6 +17,7 @@
  * As a result the written records should appear in the Application log, and
  * should be displayed correctly with the Windows event log viewer.
  */
+#include <boost/test/unit_test.hpp> 
 
 #include <stdexcept>
 #include <string>
@@ -165,7 +166,8 @@ private:
 };
 //]
 
-int main(int argc, char* argv[])
+BOOST_AUTO_TEST_SUITE(single)
+BOOST_AUTO_TEST_CASE(event_log)
 {
     try
     {
@@ -180,11 +182,10 @@ int main(int argc, char* argv[])
             announce_device_inaccessible("D:");
         }
 
-        return 0;
     }
     catch (std::exception& e)
     {
         std::cout << "FAILURE: " << e.what() << std::endl;
-        return 1;
     }
 }
+BOOST_AUTO_TEST_SUITE_END()

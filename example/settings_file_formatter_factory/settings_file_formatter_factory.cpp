@@ -14,6 +14,7 @@
  */
 
 // #define BOOST_ALL_DYN_LINK 1
+#include <boost/test/unit_test.hpp> 
 
 #include <string>
 #include <iostream>
@@ -98,7 +99,7 @@ public:
 };
 
 //! The function initializes the logging library
-void init_logging()
+static void init_logging()
 {
     // First thing - register the custom formatter for MyScopes
     logging::register_formatter_factory("MyScopes", boost::make_shared< my_scopes_formatter_factory >());
@@ -116,7 +117,7 @@ void init_logging()
 }
 
 //! The function tests logging
-void try_logging()
+static void try_logging()
 {
     BOOST_LOG_FUNCTION();
 
@@ -128,7 +129,8 @@ void try_logging()
     BOOST_LOG_SEV(lg, error) << "This is a error severity record";
 }
 
-int main(int argc, char* argv[])
+BOOST_AUTO_TEST_SUITE(single)
+BOOST_AUTO_TEST_CASE(settings_file_formatter_factory)
 {
     try
     {
@@ -138,8 +140,7 @@ int main(int argc, char* argv[])
     catch (std::exception& e)
     {
         std::cout << "FAILURE: " << e.what() << std::endl;
-        return -1;
     }
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

@@ -16,6 +16,7 @@
  */
 
 // #define BOOST_ALL_DYN_LINK 1
+#include <boost/test/unit_test.hpp> 
 
 #include <exception>
 #include <string>
@@ -45,7 +46,7 @@ enum severity_level
 //  Global logger declaration
 BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT(test_lg, src::severity_logger< >)
 
-void try_logging()
+static void try_logging()
 {
     src::severity_logger< >& lg = test_lg::get();
     BOOST_LOG_SEV(lg, normal) << "This is a normal severity record";
@@ -55,7 +56,8 @@ void try_logging()
     BOOST_LOG_SEV(lg, critical) << "This is a critical severity record";
 }
 
-int main(int argc, char* argv[])
+BOOST_AUTO_TEST_SUITE(single)
+BOOST_AUTO_TEST_CASE(settings_file)
 {
     try
     {
@@ -64,7 +66,6 @@ int main(int argc, char* argv[])
         if (!settings.is_open())
         {
             std::cout << "Could not open settings.txt file" << std::endl;
-            return 1;
         }
 
         // Read the settings and initialize logging library
@@ -80,11 +81,10 @@ int main(int argc, char* argv[])
         BOOST_LOG_SCOPED_THREAD_TAG("Tag", "TAGGED");
         try_logging();
 
-        return 0;
     }
     catch (std::exception& e)
     {
         std::cout << "FAILURE: " << e.what() << std::endl;
-        return 1;
     }
 }
+BOOST_AUTO_TEST_SUITE_END()

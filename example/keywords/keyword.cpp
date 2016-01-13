@@ -15,6 +15,7 @@
 // #define BOOST_LOG_USE_CHAR
 // #define BOOST_ALL_DYN_LINK 1
 // #define BOOST_LOG_DYN_LINK 1
+#include <boost/test/unit_test.hpp> 
 
 #include <iostream>
 
@@ -77,7 +78,8 @@ BOOST_LOG_ATTRIBUTE_KEYWORD(_timestamp, "TimeStamp", boost::posix_time::ptime)
 BOOST_LOG_ATTRIBUTE_KEYWORD(_uptime, "Uptime", attrs::timer::value_type)
 BOOST_LOG_ATTRIBUTE_KEYWORD(_scope, "Scope", attrs::named_scope::value_type)
 
-int main(int argc, char* argv[])
+BOOST_AUTO_TEST_SUITE(single)
+BOOST_AUTO_TEST_CASE(keyword)
 {
     // This is a simple tutorial/example of Boost.Log usage
 
@@ -129,5 +131,5 @@ int main(int argc, char* argv[])
     BOOST_LOG_SEV(slg, warning) << "A warning severity message, will pass to the file";
     BOOST_LOG_SEV(slg, error) << "An error severity message, will pass to the file";
 
-    return 0;
 }
+BOOST_AUTO_TEST_SUITE_END()

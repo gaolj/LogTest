@@ -17,6 +17,7 @@
  */
 
 // #define BOOST_LOG_DYN_LINK 1
+#include <boost/test/unit_test.hpp> 
 
 #include <stdexcept>
 #include <string>
@@ -60,7 +61,8 @@ void thread_foo()
     }
 }
 
-int main(int argc, char* argv[])
+BOOST_AUTO_TEST_SUITE(single)
+BOOST_AUTO_TEST_CASE(multiple_files)
 {
     try
     {
@@ -95,11 +97,10 @@ int main(int argc, char* argv[])
 
         threads.join_all();
 
-        return 0;
     }
     catch (std::exception& e)
     {
         std::cout << "FAILURE: " << e.what() << std::endl;
-        return 1;
     }
 }
+BOOST_AUTO_TEST_SUITE_END()

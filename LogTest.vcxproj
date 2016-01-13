@@ -64,8 +64,7 @@
     <ClCompile Include="example\doc\util_dynamic_type_disp.cpp" />
     <ClCompile Include="example\doc\util_manip_to_log.cpp" />
     <ClCompile Include="example\doc\util_static_type_disp.cpp" />
-    <ClCompile Include="example\event_log\event_log.cpp" />
-    <ClCompile Include="example\keywords\keywords.cpp" />
+    <ClCompile Include="example\keywords\keyword.cpp" />
     <ClCompile Include="example\multiple_files\multiple_files.cpp" />
     <ClCompile Include="example\multiple_threads\multiple_threads.cpp" />
     <ClCompile Include="example\native_syslog\native_syslog.cpp" />

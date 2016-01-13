@@ -183,9 +183,6 @@
     <ClCompile Include="example\bounded_async_log\bounded_async_log.cpp">
       <Filter>single</Filter>
     </ClCompile>
-    <ClCompile Include="example\keywords\keywords.cpp">
-      <Filter>single</Filter>
-    </ClCompile>
     <ClCompile Include="example\multiple_files\multiple_files.cpp">
       <Filter>single</Filter>
     </ClCompile>
@@ -213,7 +210,7 @@
     <ClCompile Include="example\wide_char\wide_char.cpp">
       <Filter>single</Filter>
     </ClCompile>
-    <ClCompile Include="example\event_log\event_log.cpp">
+    <ClCompile Include="example\keywords\keyword.cpp">
       <Filter>single</Filter>
     </ClCompile>
   </ItemGroup>

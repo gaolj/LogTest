@@ -5,7 +5,7 @@
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
 #include <boost/test/unit_test.hpp> 
-#include "main.h"
+
 
 #include <string>
 #include <ostream>
@@ -169,7 +169,7 @@ enum severity_level
 };
 //]
 
-inline std::ostream& operator<< (std::ostream& strm, severity_level level)
+static inline std::ostream& operator<< (std::ostream& strm, severity_level level)
 {
     const char* levels[] =
     {
@@ -187,7 +187,7 @@ inline std::ostream& operator<< (std::ostream& strm, severity_level level)
 }
 
 //[ example_extension_record_tagger_manual_logging
-void manual_logging()
+static void manual_logging()
 {
     my_logger< severity_level > logger;
 
@@ -206,7 +206,7 @@ void manual_logging()
 #define LOG_WITH_TAG(lg, sev, tg) \
     BOOST_LOG_WITH_PARAMS((lg), (keywords::severity = (sev))(my_keywords::tag = (tg)))
 
-void logging_function()
+static void logging_function()
 {
     my_logger< severity_level > logger;
 
@@ -214,7 +214,7 @@ void logging_function()
 }
 //]
 
-void init()
+static void init()
 {
     typedef sinks::synchronous_sink< sinks::text_ostream_backend > text_sink;
     boost::shared_ptr< text_sink > sink = boost::make_shared< text_sink >();
@@ -238,7 +238,7 @@ void init()
 }
 
 
-BOOST_AUTO_TEST_SUITE(ts_extension, *boost::unit_test::enable_if<extension>())
+BOOST_AUTO_TEST_SUITE(extension)
 BOOST_AUTO_TEST_CASE(extension_record_tagger)
 {
     init();

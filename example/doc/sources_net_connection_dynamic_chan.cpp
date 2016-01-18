@@ -39,7 +39,7 @@ BOOST_LOG_ATTRIBUTE_KEYWORD(sent_size, "SentSize", std::size_t)
 
 //[ example_sources_network_connection_dynamic_channels
 // Define a global logger
-BOOST_LOG_INLINE_GLOBAL_LOGGER_CTOR_ARGS(my_logger, src::channel_logger_mt< >, (keywords::channel = "general"))
+BOOST_LOG_INLINE_GLOBAL_LOGGER_CTOR_ARGS(my_logger5, src::channel_logger_mt< >, (keywords::channel = "general"))
 
 class network_connection2
 {
@@ -51,7 +51,7 @@ public:
         m_remote_addr = remote_addr;
 
         // Put message to the "net" channel
-        BOOST_LOG_CHANNEL(my_logger::get(), "net")
+        BOOST_LOG_CHANNEL(my_logger5::get(), "net")
             << logging::add_value("RemoteAddress", m_remote_addr)
             << "Connection established";
     }
@@ -59,7 +59,7 @@ public:
     void on_disconnected()
     {
         // Put message to the "net" channel
-        BOOST_LOG_CHANNEL(my_logger::get(), "net")
+        BOOST_LOG_CHANNEL(my_logger5::get(), "net")
             << logging::add_value("RemoteAddress", m_remote_addr)
             << "Connection shut down";
 
@@ -68,7 +68,7 @@ public:
 
     void on_data_received(std::size_t size)
     {
-        BOOST_LOG_CHANNEL(my_logger::get(), "stat")
+        BOOST_LOG_CHANNEL(my_logger5::get(), "stat")
             << logging::add_value("RemoteAddress", m_remote_addr)
             << logging::add_value("ReceivedSize", size)
             << "Some data received";
@@ -76,7 +76,7 @@ public:
 
     void on_data_sent(std::size_t size)
     {
-        BOOST_LOG_CHANNEL(my_logger::get(), "stat")
+        BOOST_LOG_CHANNEL(my_logger5::get(), "stat")
             << logging::add_value("RemoteAddress", m_remote_addr)
             << logging::add_value("SentSize", size)
             << "Some data sent";

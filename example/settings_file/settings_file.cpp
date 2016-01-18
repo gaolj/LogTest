@@ -44,11 +44,11 @@ enum severity_level
 };
 
 //  Global logger declaration
-BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT(test_lg, src::severity_logger< >)
+BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT(test_lg3, src::severity_logger< >)
 
 static void try_logging()
 {
-    src::severity_logger< >& lg = test_lg::get();
+    src::severity_logger< >& lg = test_lg3::get();
     BOOST_LOG_SEV(lg, normal) << "This is a normal severity record";
     BOOST_LOG_SEV(lg, notification) << "This is a notification severity record";
     BOOST_LOG_SEV(lg, warning) << "This is a warning severity record";
@@ -62,7 +62,7 @@ BOOST_AUTO_TEST_CASE(settings_file)
     try
     {
         // Open the file
-        std::ifstream settings("settings.txt");
+        std::ifstream settings("settings_file.txt");
         if (!settings.is_open())
         {
             std::cout << "Could not open settings.txt file" << std::endl;

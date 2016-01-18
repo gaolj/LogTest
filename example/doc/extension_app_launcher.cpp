@@ -5,7 +5,7 @@
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
 #include <boost/test/unit_test.hpp> 
-#include "main.h"
+
 
 #include <cstdlib>
 #include <string>
@@ -116,7 +116,7 @@ void test_notifications()
 }
 //]
 
-BOOST_AUTO_TEST_SUITE(ts_extension, *boost::unit_test::enable_if<extension>())
+BOOST_AUTO_TEST_SUITE(extension)
 BOOST_AUTO_TEST_CASE(extension_app_launcher)
 {
     init_logging();

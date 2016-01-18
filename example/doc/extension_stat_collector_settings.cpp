@@ -5,7 +5,7 @@
  *          http://www.boost.org/LICENSE_1_0.txt)
  */
 #include <boost/test/unit_test.hpp> 
-#include "main.h"
+
 
 #include <string>
 #include <fstream>
@@ -209,7 +209,7 @@ static void init_logging()
     logging::init_from_stream(strm);
 }
 
-BOOST_AUTO_TEST_SUITE(ts_extension, *boost::unit_test::enable_if<extension>())
+BOOST_AUTO_TEST_SUITE(extension)
 BOOST_AUTO_TEST_CASE(extension_stat_collector_settings)
 {
     init_logging();

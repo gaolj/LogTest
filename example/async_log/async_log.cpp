@@ -45,7 +45,7 @@ using boost::shared_ptr;
 
 enum
 {
-    LOG_RECORDS_TO_WRITE = 10000,
+    LOG_RECORDS_TO_WRITE = 1000,
     THREAD_COUNT = 2
 };
 

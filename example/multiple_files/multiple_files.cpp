@@ -49,7 +49,7 @@ enum
 };
 
 // Global logger declaration
-BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT(my_logger, src::logger_mt)
+BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT(my_logger4, src::logger_mt)
 
 // This function is executed in a separate thread
 void thread_foo()
@@ -57,7 +57,7 @@ void thread_foo()
     BOOST_LOG_SCOPED_THREAD_TAG("ThreadID", boost::this_thread::get_id());
     for (unsigned int i = 0; i < LOG_RECORDS_TO_WRITE; ++i)
     {
-        BOOST_LOG(my_logger::get()) << "Log record " << i;
+        BOOST_LOG(my_logger4::get()) << "Log record " << i;
     }
 }
 

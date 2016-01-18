@@ -40,7 +40,7 @@ namespace keywords = boost::log::keywords;
 
 using boost::shared_ptr;
 
-enum { LOG_RECORDS_TO_WRITE = 10000 };
+enum { LOG_RECORDS_TO_WRITE = 1000 };
 
 BOOST_AUTO_TEST_SUITE(single)
 BOOST_AUTO_TEST_CASE(rotating_file)

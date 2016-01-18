@@ -45,7 +45,7 @@ enum severity_level
     critical
 };
 
-BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT(test_lg, src::severity_logger< >)
+BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT(test_lg4, src::severity_logger< >)
 
 //! Our custom formatter for the scope list
 struct scope_list_formatter
@@ -105,7 +105,7 @@ static void init_logging()
     logging::register_formatter_factory("MyScopes", boost::make_shared< my_scopes_formatter_factory >());
 
     // Then load the settings from the file
-    std::ifstream settings("settings.txt");
+    std::ifstream settings("settings_file_formatter_factory.txt");
     if (!settings.is_open())
         throw std::runtime_error("Could not open settings.txt file");
     logging::init_from_stream(settings);
@@ -121,7 +121,7 @@ static void try_logging()
 {
     BOOST_LOG_FUNCTION();
 
-    src::severity_logger< >& lg = test_lg::get();
+    src::severity_logger< >& lg = test_lg4::get();
 
     BOOST_LOG_SEV(lg, critical) << "This is a critical severity record";
 

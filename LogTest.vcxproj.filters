@@ -186,9 +186,6 @@
     <ClCompile Include="example\multiple_files\multiple_files.cpp">
       <Filter>single</Filter>
     </ClCompile>
-    <ClCompile Include="example\multiple_threads\multiple_threads.cpp">
-      <Filter>single</Filter>
-    </ClCompile>
     <ClCompile Include="example\native_syslog\native_syslog.cpp">
       <Filter>single</Filter>
     </ClCompile>
@@ -212,6 +209,33 @@
     </ClCompile>
     <ClCompile Include="example\keywords\keyword.cpp">
       <Filter>single</Filter>
+    </ClCompile>
+    <ClCompile Include="example\multiple_threads\multiple_threads.cpp">
+      <Filter>single</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\extension_app_launcher.cpp">
+      <Filter>extension</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\extension_filter_parser.cpp">
+      <Filter>extension</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\extension_filter_parser_custom_rel.cpp">
+      <Filter>extension</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\extension_formatter_parser.cpp">
+      <Filter>extension</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\extension_record_tagger.cpp">
+      <Filter>extension</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\extension_stat_collector.cpp">
+      <Filter>extension</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\extension_stat_collector_settings.cpp">
+      <Filter>extension</Filter>
+    </ClCompile>
+    <ClCompile Include="example\doc\extension_system_uptime_attr.cpp">
+      <Filter>extension</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

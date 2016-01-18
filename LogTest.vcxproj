@@ -32,6 +32,14 @@
     <ClCompile Include="example\doc\expressions_channel_severity_filter.cpp" />
     <ClCompile Include="example\doc\expressions_has_attr_stat_accum.cpp" />
     <ClCompile Include="example\doc\expressions_keyword_fmt_tag.cpp" />
+    <ClCompile Include="example\doc\extension_app_launcher.cpp" />
+    <ClCompile Include="example\doc\extension_filter_parser.cpp" />
+    <ClCompile Include="example\doc\extension_filter_parser_custom_rel.cpp" />
+    <ClCompile Include="example\doc\extension_formatter_parser.cpp" />
+    <ClCompile Include="example\doc\extension_record_tagger.cpp" />
+    <ClCompile Include="example\doc\extension_stat_collector.cpp" />
+    <ClCompile Include="example\doc\extension_stat_collector_settings.cpp" />
+    <ClCompile Include="example\doc\extension_system_uptime_attr.cpp" />
     <ClCompile Include="example\doc\sinks_async.cpp" />
     <ClCompile Include="example\doc\sinks_async_bounded.cpp" />
     <ClCompile Include="example\doc\sinks_async_ordering.cpp" />
@@ -156,6 +164,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>D:/Program Files/boost_1_59_0/lib32-msvc-14.0;</AdditionalLibraryDirectories>
+      <AdditionalOptions>libboost_regex-vc140-mt-gd-1_59.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

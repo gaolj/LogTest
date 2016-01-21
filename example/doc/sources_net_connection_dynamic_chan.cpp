@@ -87,12 +87,16 @@ public:
 BOOST_AUTO_TEST_SUITE(sources)
 BOOST_AUTO_TEST_CASE(sources_net_connection_dynamic_chan)
 {
-    // Construct the sink for the "net" channel
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	// Construct the sink for the "net" channel
     typedef sinks::synchronous_sink< sinks::text_ostream_backend > text_sink;
     boost::shared_ptr< text_sink > sink = boost::make_shared< text_sink >();
 
     sink->locked_backend()->add_stream(
-        boost::make_shared< std::ofstream >("net.log"));
+        boost::make_shared< std::ofstream >("logs/sources_net_connection_dynamic_chan-net.log"));
 
     sink->set_formatter
     (
@@ -107,7 +111,7 @@ BOOST_AUTO_TEST_CASE(sources_net_connection_dynamic_chan)
     sink = boost::make_shared< text_sink >();
 
     sink->locked_backend()->add_stream(
-        boost::make_shared< std::ofstream >("stat.log"));
+        boost::make_shared< std::ofstream >("logs/sources_net_connection_dynamic_chan-stat.log"));
 
     sink->set_formatter
     (

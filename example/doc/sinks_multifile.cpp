@@ -28,7 +28,11 @@ namespace keywords = boost::log::keywords;
 //[ example_sinks_multifile
 static void init_logging()
 {
-    boost::shared_ptr< logging::core > core = logging::core::get();
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	boost::shared_ptr< logging::core > core = logging::core::get();
 
     boost::shared_ptr< sinks::text_multifile_backend > backend =
         boost::make_shared< sinks::text_multifile_backend >();
@@ -36,7 +40,7 @@ static void init_logging()
     // Set up the file naming pattern
     backend->set_file_name_composer
     (
-        sinks::file::as_file_name_composer(expr::stream << "logs/" << expr::attr< std::string >("RequestID") << ".log")
+        sinks::file::as_file_name_composer(expr::stream << "logs/sinks_multifile-" << expr::attr< std::string >("RequestID") << ".log")
     );
 
     // Wrap it into the frontend and register in the core.

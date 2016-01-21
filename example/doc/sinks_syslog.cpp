@@ -55,7 +55,11 @@ void init_native_syslog()
 //->
 void init_builtin_syslog()
 {
-    boost::shared_ptr< logging::core > core = logging::core::get();
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	boost::shared_ptr< logging::core > core = logging::core::get();
 
     // Create a new backend
     boost::shared_ptr< sinks::syslog_backend > backend(new sinks::syslog_backend(

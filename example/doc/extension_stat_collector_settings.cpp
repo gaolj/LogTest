@@ -203,7 +203,11 @@ const char settings[] =
 
 static void init_logging()
 {
-    init_factories();
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	init_factories();
 
     std::istringstream strm(settings);
     logging::init_from_stream(strm);

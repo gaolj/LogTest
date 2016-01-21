@@ -66,13 +66,17 @@ BOOST_AUTO_TEST_CASE(multiple_files)
 {
     try
     {
-        // Create a text file sink
+		logging::core::get()->flush();
+		logging::core::get()->reset_filter();
+		logging::core::get()->remove_all_sinks();
+
+		// Create a text file sink
         typedef sinks::synchronous_sink< sinks::text_multifile_backend > file_sink;
         shared_ptr< file_sink > sink(new file_sink);
 
         // Set up how the file names will be generated
         sink->locked_backend()->set_file_name_composer(sinks::file::as_file_name_composer(
-            expr::stream << "logs/" << expr::attr< boost::thread::id >("ThreadID") << ".log"));
+            expr::stream << "logs/multiple_files-" << expr::attr< boost::thread::id >("ThreadID") << ".log"));
 
         // Set the log record formatter
         sink->set_formatter

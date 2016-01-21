@@ -216,11 +216,15 @@ static void logging_function()
 
 static void init()
 {
-    typedef sinks::synchronous_sink< sinks::text_ostream_backend > text_sink;
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	typedef sinks::synchronous_sink< sinks::text_ostream_backend > text_sink;
     boost::shared_ptr< text_sink > sink = boost::make_shared< text_sink >();
 
     sink->locked_backend()->add_stream(
-        boost::make_shared< std::ofstream >("sample.log"));
+        boost::make_shared< std::ofstream >("logs/extension_record_tagger.log"));
 
     sink->set_formatter
     (

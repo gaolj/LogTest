@@ -78,13 +78,17 @@ public:
 // and another one for other records
 static void init()
 {
-    boost::shared_ptr< logging::core > core = logging::core::get();
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	boost::shared_ptr< logging::core > core = logging::core::get();
 
     // Create a backend and attach a stream to it
     boost::shared_ptr< sinks::text_ostream_backend > backend =
         boost::make_shared< sinks::text_ostream_backend >();
     backend->add_stream(
-        boost::shared_ptr< std::ostream >(new std::ofstream("test.log")));
+        boost::shared_ptr< std::ostream >(new std::ofstream("logs/expressions_has_attr_stat_accum.log")));
 
     // Create a frontend and setup filtering
     typedef sinks::synchronous_sink< sinks::text_ostream_backend > log_sink_type;

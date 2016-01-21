@@ -7,7 +7,7 @@
 
 [Sinks.TextFileSettings]
 Destination=TextFile
-FileName=test.log
+FileName=settings_file_formatter_factory.log
 AutoFlush=true
 Format="[%TimeStamp%] [%Severity%]\n%MyScopes%\n\t:: %Message%"
 Asynchronous=false

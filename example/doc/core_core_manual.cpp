@@ -37,7 +37,11 @@ void logging_function(logging::attribute_set const& attrs)
 BOOST_AUTO_TEST_SUITE(core)
 BOOST_AUTO_TEST_CASE(core_core_manual)
 {
-    logging_function(logging::attribute_set());
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	logging_function(logging::attribute_set());
 
 }
 BOOST_AUTO_TEST_SUITE_END()

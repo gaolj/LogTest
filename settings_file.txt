@@ -20,6 +20,6 @@ Filter="%Tag% | %Severity% > 3"
 [Sinks.2]
 
 Destination=TextFile
-FileName=test.log
+FileName=settings_file.log
 AutoFlush=true
 Format="[%TimeStamp%] %Tag% %Message%"

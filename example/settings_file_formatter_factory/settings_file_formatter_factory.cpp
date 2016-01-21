@@ -101,7 +101,11 @@ public:
 //! The function initializes the logging library
 static void init_logging()
 {
-    // First thing - register the custom formatter for MyScopes
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	// First thing - register the custom formatter for MyScopes
     logging::register_formatter_factory("MyScopes", boost::make_shared< my_scopes_formatter_factory >());
 
     // Then load the settings from the file

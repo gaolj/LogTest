@@ -16,7 +16,11 @@ namespace logging = boost::log;
 //[ example_tutorial_trivial_with_filtering
 static void init()
 {
-    logging::core::get()->set_filter
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+	
+	logging::core::get()->set_filter
     (
         logging::trivial::severity >= logging::trivial::info
     );

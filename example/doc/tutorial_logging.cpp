@@ -45,7 +45,11 @@ void logging_function2()
 BOOST_AUTO_TEST_SUITE(tutorial)
 BOOST_AUTO_TEST_CASE(tutorial_logging)
 {
-    logging::add_file_log("sample.log");
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	logging::add_file_log("logs/tutorial_logging.log");
     logging::add_common_attributes();
 
     logging_function1();

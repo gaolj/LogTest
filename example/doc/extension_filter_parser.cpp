@@ -132,7 +132,11 @@ static void init_factories()
 
 static void init_logging()
 {
-    init_factories();
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	init_factories();
 
     logging::add_console_log
     (

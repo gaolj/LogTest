@@ -59,7 +59,11 @@ static std::ostream& operator<< (std::ostream& strm, severity_level level)
 
 static void init()
 {
-    // Create a minimal severity table filter
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	// Create a minimal severity table filter
     typedef expr::channel_severity_filter_actor< std::string, severity_level > min_severity_filter;
     min_severity_filter min_severity = expr::channel_severity_filter(channel, severity);
 

@@ -23,7 +23,12 @@
 BOOST_AUTO_TEST_SUITE(single)
 BOOST_AUTO_TEST_CASE(trivial)
 {
-    // Trivial logging: all log records are written into a file
+	namespace logging = boost::log;
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	// Trivial logging: all log records are written into a file
     BOOST_LOG_TRIVIAL(trace) << "A trace severity message";
     BOOST_LOG_TRIVIAL(debug) << "A debug severity message";
     BOOST_LOG_TRIVIAL(info) << "An informational severity message";

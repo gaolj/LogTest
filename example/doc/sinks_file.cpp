@@ -25,11 +25,17 @@ namespace keywords = boost::log::keywords;
 //[ example_sinks_file
 static void init_logging()
 {
-    boost::shared_ptr< logging::core > core = logging::core::get();
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	boost::shared_ptr< logging::core > core = logging::core::get();
 
     boost::shared_ptr< sinks::text_file_backend > backend =
         boost::make_shared< sinks::text_file_backend >(
-            keywords::file_name = "file_%5N.log",                                          /*< file name pattern >*/
+			keywords::open_mode = std::ios::app,	// void set_open_mode(std::ios_base::openmode mode);
+			keywords::auto_flush = true,			// void auto_flush(bool f = true);
+			keywords::file_name = "logs/sinks_file_%5N.log",                                          /*< file name pattern >*/
             keywords::rotation_size = 5 * 1024 * 1024,                                     /*< rotate the file upon reaching 5 MiB size... >*/
             keywords::time_based_rotation = sinks::file::rotation_at_time_point(12, 0, 0)  /*< ...or every day, at noon, whichever comes first >*/
         );

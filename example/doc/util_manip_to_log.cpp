@@ -16,7 +16,7 @@
 namespace logging = boost::log;
 
 //[ example_utility_manipulators_to_log
-std::ostream& operator<<
+static std::ostream& operator<<
 (
     std::ostream& strm,
     logging::to_log_manip< int > const& manip
@@ -37,7 +37,7 @@ void test_manip()
 struct tag_A;
 struct tag_B;
 
-std::ostream& operator<<
+static std::ostream& operator<<
 (
     std::ostream& strm,
     logging::to_log_manip< int, tag_A > const& manip
@@ -47,7 +47,7 @@ std::ostream& operator<<
     return strm;
 }
 
-std::ostream& operator<<
+static std::ostream& operator<<
 (
     std::ostream& strm,
     logging::to_log_manip< int, tag_B > const& manip

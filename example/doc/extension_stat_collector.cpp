@@ -151,7 +151,11 @@ typedef sinks::synchronous_sink< stat_collector > sink_t;
 
 static void init_logging()
 {
-    boost::shared_ptr< logging::core > core = logging::core::get();
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	boost::shared_ptr< logging::core > core = logging::core::get();
 
     boost::shared_ptr< stat_collector > backend(new stat_collector("stat.csv"));
     boost::shared_ptr< sink_t > sink(new sink_t(backend));

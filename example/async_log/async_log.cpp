@@ -45,7 +45,7 @@ using boost::shared_ptr;
 
 enum
 {
-    LOG_RECORDS_TO_WRITE = 1000,
+    LOG_RECORDS_TO_WRITE = 100,
     THREAD_COUNT = 2
 };
 
@@ -72,8 +72,12 @@ BOOST_AUTO_TEST_CASE(async_log)
 {
     try
     {
-        // Open a rotating text file
-        shared_ptr< std::ostream > strm(new std::ofstream("test.log"));
+		logging::core::get()->flush();
+		logging::core::get()->reset_filter();
+		logging::core::get()->remove_all_sinks();
+
+		// Open a rotating text file
+        shared_ptr< std::ostream > strm(new std::ofstream("logs/async_log.log"));
         if (!strm->good())
             throw std::runtime_error("Failed to open a text log file");
 

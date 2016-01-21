@@ -137,11 +137,15 @@ void init_exception_handler_nothrow()
 
 void init()
 {
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
     typedef sinks::synchronous_sink< sinks::text_ostream_backend > text_sink;
     boost::shared_ptr< text_sink > sink = boost::make_shared< text_sink >();
 
     sink->locked_backend()->add_stream(
-        boost::make_shared< std::ofstream >("sample.log"));
+        boost::make_shared< std::ofstream >("logs/exception_handling.log"));
 
     sink->set_formatter
     (

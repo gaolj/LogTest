@@ -240,5 +240,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
+    <Text Include="settings_file.txt" />
+    <Text Include="settings_file_formatter_factory.txt" />
   </ItemGroup>
 </Project>

@@ -73,7 +73,11 @@ BOOST_LOG_ATTRIBUTE_KEYWORD(tag_attr, "Tag", std::string)
 
 static void init()
 {
-    // Setup the common formatter for all sinks
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	// Setup the common formatter for all sinks
     logging::formatter fmt = expr::stream
         << std::setw(6) << std::setfill('0') << line_id << std::setfill(' ')
         << ": <" << severity << ">\t"
@@ -88,7 +92,7 @@ static void init()
     boost::shared_ptr< text_sink > sink = boost::make_shared< text_sink >();
 
     sink->locked_backend()->add_stream(
-        boost::make_shared< std::ofstream >("full.log"));
+        boost::make_shared< std::ofstream >("logs/tutorial_filtering_full.log"));
 
     sink->set_formatter(fmt);
 
@@ -97,7 +101,7 @@ static void init()
     sink = boost::make_shared< text_sink >();
 
     sink->locked_backend()->add_stream(
-        boost::make_shared< std::ofstream >("important.log"));
+        boost::make_shared< std::ofstream >("logs/tutorial_filtering_important.log"));
 
     sink->set_formatter(fmt);
 

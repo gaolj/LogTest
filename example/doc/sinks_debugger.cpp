@@ -28,7 +28,11 @@ typedef sinks::synchronous_sink< sinks::debug_output_backend > sink_t;
 
 static void init_logging()
 {
-    boost::shared_ptr< logging::core > core = logging::core::get();
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	boost::shared_ptr< logging::core > core = logging::core::get();
 
     // Create the sink. The backend requires synchronization in the frontend.
     boost::shared_ptr< sink_t > sink(new sink_t());

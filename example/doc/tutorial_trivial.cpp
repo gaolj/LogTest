@@ -13,7 +13,12 @@
 BOOST_AUTO_TEST_SUITE(tutorial)
 BOOST_AUTO_TEST_CASE(tutorial_trivial)
 {
-    BOOST_LOG_TRIVIAL(trace) << "A trace severity message";
+	namespace logging = boost::log;
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+	
+	BOOST_LOG_TRIVIAL(trace) << "A trace severity message";
     BOOST_LOG_TRIVIAL(debug) << "A debug severity message";
     BOOST_LOG_TRIVIAL(info) << "An informational severity message";
     BOOST_LOG_TRIVIAL(warning) << "A warning severity message";

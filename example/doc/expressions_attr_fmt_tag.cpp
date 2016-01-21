@@ -57,7 +57,7 @@ static std::ostream& operator<< (std::ostream& strm, severity_level level)
 struct severity_tag;
 
 // The operator is used when putting the severity level to log
-logging::formatting_ostream& operator<<
+static logging::formatting_ostream& operator<<
 (
     logging::formatting_ostream& strm,
     logging::to_log_manip< severity_level, severity_tag > const& manip
@@ -83,7 +83,11 @@ logging::formatting_ostream& operator<<
 
 static void init()
 {
-    logging::add_console_log
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	logging::add_console_log
     (
         std::clog,
         // This makes the sink to write log records that look like this:

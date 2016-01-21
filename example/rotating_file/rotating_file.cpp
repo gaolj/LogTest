@@ -47,10 +47,14 @@ BOOST_AUTO_TEST_CASE(rotating_file)
 {
     try
     {
-        // Create a text file sink
+		logging::core::get()->flush();
+		logging::core::get()->reset_filter();
+		logging::core::get()->remove_all_sinks();
+
+		// Create a text file sink
         typedef sinks::synchronous_sink< sinks::text_file_backend > file_sink;
         shared_ptr< file_sink > sink(new file_sink(
-            keywords::file_name = "%Y%m%d_%H%M%S_%5N.log",      // file name pattern
+            keywords::file_name = "logs/rotating_file-%Y%m%d_%H%M%S_%5N.log",      // file name pattern
             keywords::rotation_size = 16384                     // rotation size, in characters
             ));
 

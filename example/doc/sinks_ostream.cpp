@@ -26,7 +26,11 @@ namespace keywords = boost::log::keywords;
 //[ example_sinks_ostream
 static void init_logging()
 {
-    boost::shared_ptr< logging::core > core = logging::core::get();
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	boost::shared_ptr< logging::core > core = logging::core::get();
 
     // Create a backend and attach a couple of streams to it
     boost::shared_ptr< sinks::text_ostream_backend > backend =
@@ -34,7 +38,7 @@ static void init_logging()
     backend->add_stream(
         boost::shared_ptr< std::ostream >(&std::clog, boost::null_deleter()));
     backend->add_stream(
-        boost::shared_ptr< std::ostream >(new std::ofstream("sample.log")));
+        boost::shared_ptr< std::ostream >(new std::ofstream("logs/sinks_ostream.log")));
 
     // Enable auto-flushing after each log record written
     backend->auto_flush(true);

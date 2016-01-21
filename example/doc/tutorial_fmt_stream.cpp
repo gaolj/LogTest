@@ -26,9 +26,13 @@ namespace keywords = boost::log::keywords;
 //[ example_tutorial_formatters_stream
 static void init()
 {
-    logging::add_file_log
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	logging::add_file_log
     (
-        keywords::file_name = "sample_%N.log",
+        keywords::file_name = "logs/tutorial_fmt_stream_%N.log",
         // This makes the sink to write log records that look like this:
         // 1: <normal> A normal severity message
         // 2: <error> An error severity message
@@ -50,7 +54,7 @@ static void init()
 {
     logging::add_file_log
     (
-        keywords::file_name = "sample_%N.log",
+        keywords::file_name = "logs/tutorial_fmt_stream_%N.log",
         // This makes the sink to write log records that look like this:
         // YYYY-MM-DD HH:MI:SS: <normal> A normal severity message
         // YYYY-MM-DD HH:MI:SS: <error> An error severity message

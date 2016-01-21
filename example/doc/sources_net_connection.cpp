@@ -83,13 +83,17 @@ public:
 BOOST_AUTO_TEST_SUITE(sources)
 BOOST_AUTO_TEST_CASE(sources_net_connection)
 {
-    // Construct the sink
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+	
+	// Construct the sink
     typedef sinks::synchronous_sink< sinks::text_ostream_backend > text_sink;
     boost::shared_ptr< text_sink > sink = boost::make_shared< text_sink >();
 
     // Add a stream to write log to
     sink->locked_backend()->add_stream(
-        boost::make_shared< std::ofstream >("sample.log"));
+        boost::make_shared< std::ofstream >("logs/sources_net_connection.log"));
 
     // Set the formatter
     sink->set_formatter

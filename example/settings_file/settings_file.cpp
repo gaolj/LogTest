@@ -61,7 +61,11 @@ BOOST_AUTO_TEST_CASE(settings_file)
 {
     try
     {
-        // Open the file
+		logging::core::get()->flush();
+		logging::core::get()->reset_filter();
+		logging::core::get()->remove_all_sinks();
+
+		// Open the file
         std::ifstream settings("settings_file.txt");
         if (!settings.is_open())
         {

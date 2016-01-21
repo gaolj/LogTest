@@ -51,7 +51,11 @@ BOOST_AUTO_TEST_CASE(syslog)
 {
     try
     {
-        // Create a syslog sink
+		logging::core::get()->flush();
+		logging::core::get()->reset_filter();
+		logging::core::get()->remove_all_sinks();
+
+		// Create a syslog sink
         shared_ptr< sinks::synchronous_sink< sinks::syslog_backend > > sink(
             new sinks::synchronous_sink< sinks::syslog_backend >());
 

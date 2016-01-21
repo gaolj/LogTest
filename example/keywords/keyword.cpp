@@ -81,7 +81,11 @@ BOOST_LOG_ATTRIBUTE_KEYWORD(_scope, "Scope", attrs::named_scope::value_type)
 BOOST_AUTO_TEST_SUITE(single)
 BOOST_AUTO_TEST_CASE(keyword)
 {
-    // This is a simple tutorial/example of Boost.Log usage
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	// This is a simple tutorial/example of Boost.Log usage
 
     // The first thing we have to do to get using the library is
     // to set up the logging sinks - i.e. where the logs will be written to.
@@ -90,7 +94,7 @@ BOOST_AUTO_TEST_CASE(keyword)
     // One can also use lambda expressions to setup filters and formatters
     logging::add_file_log
     (
-        "sample.log",
+        "logs/keyword.log",
         keywords::filter = _severity >= warning,
         keywords::format = expr::stream
             << expr::format_date_time(_timestamp, "%Y-%m-%d, %H:%M:%S.%f")

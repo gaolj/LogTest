@@ -20,9 +20,13 @@ namespace keywords = boost::log::keywords;
 //[ example_tutorial_formatters_string
 static void init()
 {
-    logging::add_file_log
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	logging::add_file_log
     (
-        keywords::file_name = "sample_%N.log",
+        keywords::file_name = "logs/tutorial_fmt_string_%N.log",
         keywords::format = "[%TimeStamp%]: %Message%"
     );
 }

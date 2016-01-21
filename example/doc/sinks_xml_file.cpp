@@ -84,9 +84,13 @@ static void init_logging()
 //[ example_sinks_xml_file_final
 static void init_logging()
 {
-    // Create a text file sink
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	// Create a text file sink
     boost::shared_ptr< file_sink > sink(new file_sink(
-        keywords::file_name = "%Y%m%d_%H%M%S_%5N.xml",
+        keywords::file_name = "logs/sinks_xml_file-%Y%m%d_%H%M%S_%5N.xml",
         keywords::rotation_size = 16384
     ));
 
@@ -121,7 +125,7 @@ static void init_logging()
 }
 //]
 
-enum { LOG_RECORDS_TO_WRITE = 2000 };
+enum { LOG_RECORDS_TO_WRITE = 500 };
 
 BOOST_AUTO_TEST_SUITE(sink)
 BOOST_AUTO_TEST_CASE(sinks_xml_file)

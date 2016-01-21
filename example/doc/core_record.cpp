@@ -31,7 +31,7 @@ enum severity_level
 };
 
 // The operator puts a human-friendly representation of the severity level to the stream
-std::ostream& operator<< (std::ostream& strm, severity_level level)
+static std::ostream& operator<< (std::ostream& strm, severity_level level)
 {
     static const char* strings[] =
     {

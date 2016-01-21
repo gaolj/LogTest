@@ -73,7 +73,11 @@ std::string severity_level_as_urgency(
 // The function initializes the logging library
 static void init_logging()
 {
-    boost::shared_ptr< logging::core > core = logging::core::get();
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	boost::shared_ptr< logging::core > core = logging::core::get();
 
     typedef sinks::synchronous_sink< app_launcher > sink_t;
     boost::shared_ptr< sink_t > sink(new sink_t());

@@ -69,9 +69,13 @@ BOOST_LOG_ATTRIBUTE_KEYWORD(timestamp, "TimeStamp", boost::posix_time::ptime)
 
 static void init_logging()
 {
-    boost::shared_ptr< sinks::synchronous_sink< sinks::text_file_backend > > sink = logging::add_file_log
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	boost::shared_ptr< sinks::synchronous_sink< sinks::text_file_backend > > sink = logging::add_file_log
     (
-        "sample.log",
+        "logs/wide_char.log",
         keywords::format = expr::stream
             << expr::format_date_time(timestamp, "%Y-%m-%d, %H:%M:%S.%f")
             << " <" << severity.or_default(normal)

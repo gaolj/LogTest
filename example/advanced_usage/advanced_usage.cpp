@@ -82,7 +82,11 @@ int foo(src::logger& lg)
 BOOST_AUTO_TEST_SUITE(single)
 BOOST_AUTO_TEST_CASE(advanced_usage)
 {
-    // This is a in-depth tutorial/example of Boost.Log usage
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	// This is a in-depth tutorial/example of Boost.Log usage
 
     // The first thing we have to do to get using the library is
     // to set up the logging sinks - i.e. where the logs will be written to.
@@ -119,7 +123,7 @@ BOOST_AUTO_TEST_CASE(advanced_usage)
         pBackend->add_stream(pStream);
 
         // We can add more than one stream to the sink backend
-        shared_ptr< std::ofstream > pStream2(new std::ofstream("sample.log"));
+        shared_ptr< std::ofstream > pStream2(new std::ofstream("logs/advanced_usage.log"));
         assert(pStream2->is_open());
         pBackend->add_stream(pStream2);
     }

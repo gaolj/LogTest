@@ -50,7 +50,11 @@ typedef sinks::unlocked_sink< my_backend > sink_t;
 
 static void init_logging()
 {
-    boost::shared_ptr< logging::core > core = logging::core::get();
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	boost::shared_ptr< logging::core > core = logging::core::get();
 
     // The simplest way, the backend is default-constructed
     boost::shared_ptr< sink_t > sink1(new sink_t());

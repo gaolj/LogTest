@@ -46,7 +46,11 @@ typedef sinks::asynchronous_sink<
 
 static boost::shared_ptr< sink_t > init_logging()
 {
-    boost::shared_ptr< logging::core > core = logging::core::get();
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	boost::shared_ptr< logging::core > core = logging::core::get();
 
     // Create a backend and initialize it with a stream
     boost::shared_ptr< sinks::text_ostream_backend > backend =
@@ -72,7 +76,7 @@ static boost::shared_ptr< sink_t > init_logging()
     // You can also manage backend in a thread-safe manner
     {
         sink_t::locked_backend_ptr p = sink->locked_backend();
-        p->add_stream(boost::make_shared< std::ofstream >("sample.log"));
+        p->add_stream(boost::make_shared< std::ofstream >("logs/sinks_async_bounded.log"));
     }
     //->
 

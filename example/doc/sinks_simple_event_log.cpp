@@ -43,7 +43,11 @@ enum severity_level
 
 static void init_logging()
 {
-    // Create an event log sink
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	// Create an event log sink
     boost::shared_ptr< sink_t > sink(new sink_t());
 
     sink->set_formatter

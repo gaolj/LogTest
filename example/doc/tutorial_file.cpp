@@ -59,9 +59,15 @@ static void init()
 //[ example_tutorial_file_advanced
 static void init()
 {
-    logging::add_file_log
-    (
-        keywords::file_name = "sample_%N.log",                                        /*< file name pattern >*/
+	logging::core::get()->flush();
+	logging::core::get()->reset_filter();
+	logging::core::get()->remove_all_sinks();
+
+	logging::add_file_log
+		(
+		keywords::open_mode = std::ios::app,
+		keywords::auto_flush = true,
+        keywords::file_name = "logs/tutorial_file_%N.log",                                        /*< file name pattern >*/
         keywords::rotation_size = 10 * 1024 * 1024,                                   /*< rotate files every 10 MiB... >*/
         keywords::time_based_rotation = sinks::file::rotation_at_time_point(0, 0, 0), /*< ...or at midnight >*/
         keywords::format = "[%TimeStamp%]: %Message%"                                 /*< log record format >*/

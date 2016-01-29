@@ -157,7 +157,7 @@ static void init_logging()
 
 	boost::shared_ptr< logging::core > core = logging::core::get();
 
-    boost::shared_ptr< stat_collector > backend(new stat_collector("stat.csv"));
+    boost::shared_ptr< stat_collector > backend(new stat_collector("logs/stat.csv"));
     boost::shared_ptr< sink_t > sink(new sink_t(backend));
     core->add_sink(sink);
 }

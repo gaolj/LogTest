@@ -1,5 +1,23 @@
---run_test=tutorial/tutorial_attributes
+[boost.log compare to log4***]
+boost.log与log4***最大的区别在于灵活，boost.log的灵活性简直到了令人发指的地步，
+小到日志级别的自定义，各种过滤条件、各种格式化输出，大到日志源sources、日志sink。
+当然灵活也要付出代价，一是学习难度增加不小（至少十倍于log4***），二是运行时的性能要差一些（当然要看你使用的复杂程度），如果不是太复杂的话（过滤条件、格式化等），性能基本和log4***差不多。
+			
+severity：级别及对应格式化文字都能自定义，可根据severity的范围filter，比如severity >= warning，severity < warning
+filter:灵活多样，可根据severity、expr::has_attr、expr::begins_with
+每条日志可以增加各种属性（attribute），并可根据属性进行过滤及格式化输出，例如只有error级别以上才会输出调用堆栈
+NAMED_SCOPE：跟踪调用堆栈
+多模块系统，可以在各模块中统一用boost.log，最后在主程序中使用共同的log配置进行输出
+多线程下，各线程日志输出的排序
+日志sink，可定制输出到网络、数据库等
 
+
+测试方式：
+默认会运行所有的测试示例
+如果想运行tutorial_attributes.cpp，只要在（调试/命令参数）中设置	--run_test=tutorial/tutorial_attributes
+
+
+[Digest摘要]
 [Tutorial]
 BOOST_LOG_TRIVIAL(trace)
 [2016-01-11 17:34:05.987649] [0x00003764] [trace]   A trace severity message
@@ -300,3 +318,7 @@ logging::core::get()->add_global_attribute("MyRandomAttr", attrs::make_function(
 
 	BOOST_LOG_FUNCTION();
 	throw boost::enable_error_info(std::range_error("x must not be zero")) << logging::current_scope();
+
+
+GLOBAL_LOGGER：线程安全，各模块（DLL）可用
+Stop watch (timer)
